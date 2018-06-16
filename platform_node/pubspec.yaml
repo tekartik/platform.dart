@@ -11,7 +11,7 @@ dependencies:
   tekartik_platform:
     git:
       url: git://github.com/tekartik/platform.dart
-      path: http
+      path: platform
   node_io: any
 
 dev_dependencies:
