@@ -29,7 +29,7 @@ run(PlatformContext context) {
 
     print('version ${context.browser.version}');
 
-    BrowserOperatingSystem os = context.browser.os;
+    OperatingSystem os = context.browser.os;
     if (os.isWindows) {
       print('We are on Windows');
     }

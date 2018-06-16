@@ -46,8 +46,8 @@ class PlatformContextNode implements PlatformContext {
   String toString() => '[node] $node';
 
   @override
-  Map toMap() {
-    Map map = {'node': node.toMap()};
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = {'node': node.toMap()};
     return map;
   }
 }

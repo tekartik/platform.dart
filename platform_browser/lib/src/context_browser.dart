@@ -1,29 +1,7 @@
 import 'package:tekartik_platform/context.dart';
+import 'package:tekartik_platform_browser/src/browser/operating_system.dart';
 import 'browser_detect.dart';
 import 'package:pub_semver/pub_semver.dart';
-
-class _OperatingSystem implements BrowserOperatingSystem {
-  BrowserDetect _detect = new BrowserDetect();
-  _OperatingSystem([this._detect]) {
-    if (_detect == null) {
-      _detect = new BrowserDetect();
-    }
-  }
-  @override
-  bool get isWindows => _detect.isWindows;
-
-  @override
-  bool get isMac => _detect.isMac;
-
-  @override
-  bool get isLinux => _detect.isLinux;
-
-  @override
-  bool get isAndroid => _detect.isMobileAndroid;
-
-  @override
-  bool get isIOS => _detect.isMobileIOS;
-}
 
 class _Device implements BrowserDevice {
   BrowserDetect _detect = new BrowserDetect();
@@ -52,7 +30,7 @@ class _Device implements BrowserDevice {
 class _Browser implements Browser {
   BrowserDetect _detect = new BrowserDetect();
 
-  BrowserOperatingSystem _os;
+  OperatingSystemBrowser _os;
   BrowserDevice _device;
 
   String get navigatorText {
@@ -85,10 +63,7 @@ class _Browser implements Browser {
     Map map = {};
     map['navigator'] = navigatorText;
     map['version'] = version.toString();
-    String platform = _platformText;
-    if (_platformText != null) {
-      map['platform'] = platform;
-    }
+    map['os'] = os.toMap();
     if (isDartVm) {
       map['dartVm'] = true;
     }
@@ -119,30 +94,9 @@ class _Browser implements Browser {
   bool get isMobile => _detect.isMobile;
 
   @override
-  bool get isWindows => _detect.isWindows;
-
-  @override
-  bool get isMac => _detect.isMac;
-
-  @override
-  bool get isLinux => _detect.isLinux;
-
-  String get _platformText {
-    String platform;
-    if (isWindows) {
-      platform = 'windows';
-    } else if (isMac) {
-      platform = 'mac';
-    } else if (isLinux) {
-      platform = 'linux';
-    }
-    return platform;
-  }
-
-  @override
-  BrowserOperatingSystem get os {
+  OperatingSystemBrowser get os {
     if (_os == null) {
-      _os = new _OperatingSystem(_detect);
+      _os = new OperatingSystemBrowser(_detect);
     }
     return _os;
   }
@@ -173,8 +127,8 @@ class _BrowserPlatformContext implements PlatformContext {
   String toString() => toMap().toString();
 
   @override
-  Map toMap() {
-    Map map = {'browser': browser.toMap()};
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = {'browser': browser.toMap()};
     return map;
   }
 }

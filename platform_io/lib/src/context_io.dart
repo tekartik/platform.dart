@@ -69,8 +69,8 @@ class PlatformContextIo implements PlatformContext {
   String toString() => '[io] $io';
 
   @override
-  Map toMap() {
-    Map map = {'io': io.toMap()};
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = {'io': io.toMap()};
     return map;
   }
 }

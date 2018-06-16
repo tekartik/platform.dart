@@ -2,7 +2,7 @@ library tekartik_platform_context.context;
 
 import 'package:pub_semver/pub_semver.dart';
 
-abstract class BrowserOperatingSystem {
+abstract class OperatingSystem {
   bool get isWindows;
   bool get isMac;
   bool get isLinux;
@@ -19,7 +19,7 @@ abstract class BrowserDevice {
 }
 
 abstract class Browser {
-  BrowserOperatingSystem get os;
+  OperatingSystem get os;
   BrowserDevice get device;
 
   bool get isIe;
@@ -38,11 +38,6 @@ abstract class Browser {
 
   // Mobile browser version;
   bool get isMobile;
-
-  // Desktop
-  bool get isWindows;
-  bool get isMac;
-  bool get isLinux;
 }
 
 abstract class Io {
@@ -69,5 +64,5 @@ abstract class PlatformContext {
   Node get node;
 
   // for debugging
-  Map toMap();
+  Map<String, dynamic> toMap();
 }
