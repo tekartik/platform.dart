@@ -1,0 +1,24 @@
+name: tekartik_platform_io
+description: Platform io
+version: 0.1.0
+#homepage: https://www.example.com
+#author: alex <email@example.com>
+
+environment:
+  sdk: '>=1.24.3 <2.0.0'
+
+dependencies:
+  tekartik_platform:
+    git:
+      url: git://github.com/tekartik/platform.dart
+      path: http
+
+dev_dependencies:
+  test: ">=0.12.34"
+  dev_test: any
+  tekartik_platform_test:
+    path: ../platform_test
+
+dependency_overrides:
+  tekartik_platform:
+    path: ../platform

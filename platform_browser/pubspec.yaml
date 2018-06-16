@@ -1,0 +1,26 @@
+name: tekartik_platform_browser
+version: 0.1.0
+description: Get the global platform context
+environment:
+  sdk: '>=1.24.3 <2.0.0'
+
+dependencies:
+  pub_semver: any
+  collection: any
+  tekartik_platform:
+    git:
+      url: git://github.com/tekartik/platform.dart
+      path: http
+
+dev_dependencies:
+  test: ">=0.12.34"
+  dev_test: any
+  browser: any
+  tekartik_platform_test:
+    path: ../platform_test
+
+dependency_overrides:
+  tekartik_platform:
+    path: ../platform
+
+

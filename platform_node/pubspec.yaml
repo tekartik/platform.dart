@@ -1,0 +1,27 @@
+name: tekartik_platform_node
+description: Platform node
+version: 0.1.0
+#homepage: https://www.example.com
+#author: alex <email@example.com>
+
+environment:
+  sdk: '>=2.0.0-dev.54 <2.0.0'
+
+dependencies:
+  tekartik_platform:
+    git:
+      url: git://github.com/tekartik/platform.dart
+      path: http
+  node_io: any
+
+dev_dependencies:
+  test: ">=0.12.34"
+  dev_test: any
+  tekartik_platform_test:
+    path: ../platform_test
+  build_runner: ">=0.8.8"
+  build_node_compilers: ">=0.1.3"
+
+dependency_overrides:
+  tekartik_platform:
+    path: ../platform
