@@ -5,6 +5,7 @@ set -e
 
 dartanalyzer --fatal-warnings .
 
-pub run test -p firefox,chrome
+pub run test -p chrome
+# pub run test -p firefox
 
 # pub build example --web-compiler=dartdevc
