@@ -7,7 +7,7 @@ set -xe
 
 dartanalyzer --fatal-warnings .
 
-pbr build example --output=example:build
+pub run build_runner build example --output=example:build
 node build/platform_context_node_example.dart.js
 
 pub run test -p node
