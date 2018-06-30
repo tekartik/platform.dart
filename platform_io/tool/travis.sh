@@ -8,6 +8,7 @@ dartanalyzer --fatal-warnings .
 dart example/platform_context_io_example.dart
 
 pub run test -p vm
+pub run build_runner test -- -p vm
 
 
 # pub build example --web-compiler=dartdevc
