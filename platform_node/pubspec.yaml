@@ -12,7 +12,8 @@ dependencies:
     git:
       url: git://github.com/tekartik/platform.dart
       path: platform
-  node_io: any
+      ref: dart2
+  node_io: '>=1.0.0-dev.7'
   path: '>=1.6.1'
 
 dev_dependencies:
@@ -21,6 +22,7 @@ dev_dependencies:
   tekartik_platform_test:
     path: ../platform_test
   build_runner: ">=0.8.8"
+  build_test: any
   build_node_compilers: ">=0.1.3"
 
 dependency_overrides:

@@ -3,7 +3,7 @@
 # Fast fail the script on failures.
 set -e
 
-dartanalyzer --fatal-warnings .
+dartanalyzer --fatal-warnings lib example test
 
 dart example/platform_context_io_example.dart
 
