@@ -2,7 +2,7 @@ name: tekartik_platform_browser
 version: 0.1.0
 description: Get the global platform context
 environment:
-  sdk: '>=2.0.0-dev.63 <3.0.0'
+  sdk: '>=2.0.0-dev.58 <3.0.0'
 
 dependencies:
   pub_semver: any
