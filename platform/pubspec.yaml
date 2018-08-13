@@ -11,9 +11,10 @@ dependencies:
 dev_dependencies:
   test: any
   dev_test: any
-  browser: any
   chrome_travis:
-    git: git://github.com/tekartik/chrome_travis.dart
+    git:
+      url: git://github.com/tekartik/chrome_travis.dart
+      ref: dart2
   build_runner: ">=0.8.8"
   build_test: ">=0.10.2"
   build_web_compilers: '>=0.4.0'

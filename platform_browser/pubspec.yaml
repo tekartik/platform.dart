@@ -16,7 +16,6 @@ dependencies:
 dev_dependencies:
   test: ">=1.2.0"
   dev_test: any
-  browser: any
   tekartik_platform_test:
     path: ../platform_test
   build_runner: ">=0.8.8"
