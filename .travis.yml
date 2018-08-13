@@ -19,7 +19,7 @@ jobs:
 
 stages:
   - stable
-#  - dev
+  - dev
 
 # Only building master means that we don't run two builds for each pull request.
 branches:
