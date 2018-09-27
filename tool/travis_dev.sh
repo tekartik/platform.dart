@@ -16,3 +16,8 @@ pushd platform_node
 pub get
 tool/travis.sh
 popd
+
+pushd platform_node
+pub get
+tool/travis.sh
+popd
