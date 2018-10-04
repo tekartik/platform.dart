@@ -23,6 +23,7 @@ BrowserDetect get browserDetect {
 }
 
 bool get isIe => browserDetect.isIe;
+bool get isEdge => browserDetect.isEdge;
 bool get isChrome => browserDetect.isChrome;
 bool get isFirefox => browserDetect.isFirefox;
 bool get isSafari => browserDetect.isSafari;

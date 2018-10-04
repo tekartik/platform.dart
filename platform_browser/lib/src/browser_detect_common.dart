@@ -95,6 +95,7 @@ class BrowserDetectCommon {
   bool _isMobile;
   bool _isChrome;
   bool _isIe;
+  bool _isEdge;
 
   // OS
   bool _isWindows;
@@ -108,12 +109,18 @@ class BrowserDetectCommon {
     if (_isIe == null) {
       init();
       // Edge 12 and over
-      _isIe = _checkAndGetVersion('Edge');
-      if (_isIe == false) {
-        _isIe = _checkAndGetVersion('Trident');
-      }
+      _isIe = _checkAndGetVersion('Trident');
     }
     return _isIe;
+  }
+
+  bool get isEdge {
+    if (_isEdge == null) {
+      init();
+      // Edge 12 and over
+      _isEdge = _checkAndGetVersion('Edge');
+    }
+    return _isEdge;
   }
 
   bool get isIos {
@@ -241,14 +248,15 @@ class BrowserDetectCommon {
     _isChrome = null;
     _isSafari = null;
     _isIe = null;
+    _isEdge = null;
 
     _isMobile = null;
     _browserVersion = null;
     _isIos = null;
 
     if (_userAgent != null) {
-      // ie is tricky as it sets others
-      if (isIe) {
+      // ie/edge is tricky as it sets others
+      if (isIe || isEdge) {
         _isFirefox = false;
         _isChrome = false;
         _isSafari = false;

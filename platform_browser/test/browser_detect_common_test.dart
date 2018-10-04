@@ -75,15 +75,17 @@ void defineTests() {
       browserDetect.userAgent =
           'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729; Tablet PC 2.0; MALNJS; rv:11.0) like Gecko';
       expect(browserDetect.isIe, isTrue);
+      expect(browserDetect.isEdge, isFalse);
       expect(browserDetect.browserVersion, new Version(7, 0, 0));
       expect(browserDetect.isMobile, isFalse);
       _checkSingleBrowser();
     });
 
-    test('ie_edge', () {
+    test('edge', () {
       browserDetect.userAgent =
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
-      expect(browserDetect.isIe, isTrue);
+      expect(browserDetect.isEdge, isTrue);
+      expect(browserDetect.isIe, isFalse);
       expect(browserDetect.browserVersion, new Version(12, 0, 0));
       expect(browserDetect.isMobile, isFalse);
       _checkSingleBrowser();
