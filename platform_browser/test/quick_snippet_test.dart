@@ -64,7 +64,7 @@ main() {
 
     test('all', () {
       for (String userAgent in userAgents) {
-        BrowserDetectCommon detect = new BrowserDetectCommon()
+        BrowserDetectCommon detect = BrowserDetectCommon()
           ..userAgent = userAgent;
         expect(isUserAgentIe(userAgent), detect.isIe, reason: userAgent);
         expect(isUserAgentSafari(userAgent), detect.isSafari,

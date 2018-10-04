@@ -17,7 +17,7 @@ BrowserDetect _browserDetect;
 
 BrowserDetect get browserDetect {
   if (_browserDetect == null) {
-    _browserDetect = new BrowserDetect();
+    _browserDetect = BrowserDetect();
   }
   return _browserDetect;
 }

@@ -24,8 +24,7 @@ void defineTests() {
     }
 
     Device _fromUserAgent(String userAgent) {
-      Device device =
-          new Device(new BrowserDetectCommon()..userAgent = userAgent);
+      Device device = Device(BrowserDetectCommon()..userAgent = userAgent);
       _checkSingle(device);
       return device;
     }

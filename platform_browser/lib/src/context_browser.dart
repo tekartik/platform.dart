@@ -4,10 +4,10 @@ import 'browser_detect.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 class _Device implements BrowserDevice {
-  BrowserDetect _detect = new BrowserDetect();
+  BrowserDetect _detect = BrowserDetect();
   _Device([this._detect]) {
     if (_detect == null) {
-      _detect = new BrowserDetect();
+      _detect = BrowserDetect();
     }
   }
 
@@ -28,7 +28,7 @@ class _Device implements BrowserDevice {
 }
 
 class _Browser implements Browser {
-  BrowserDetect _detect = new BrowserDetect();
+  BrowserDetect _detect = BrowserDetect();
 
   OperatingSystemBrowser _os;
   BrowserDevice _device;
@@ -96,7 +96,7 @@ class _Browser implements Browser {
   @override
   OperatingSystemBrowser get os {
     if (_os == null) {
-      _os = new OperatingSystemBrowser(_detect);
+      _os = OperatingSystemBrowser(_detect);
     }
     return _os;
   }
@@ -104,7 +104,7 @@ class _Browser implements Browser {
   @override
   BrowserDevice get device {
     if (_device == null) {
-      _device = new _Device(_detect);
+      _device = _Device(_detect);
     }
     return _device;
   }
@@ -117,7 +117,7 @@ class _BrowserPlatformContext implements PlatformContext {
   Node get node => null;
 
   // non null if in io
-  final _Browser browser = new _Browser();
+  final _Browser browser = _Browser();
 
   _BrowserPlatformContext() {
     browser._detect.init();
@@ -135,4 +135,4 @@ class _BrowserPlatformContext implements PlatformContext {
 
 PlatformContext _browserPlatformContext;
 PlatformContext get browserPlatformContext =>
-    _browserPlatformContext ??= new _BrowserPlatformContext();
+    _browserPlatformContext ??= _BrowserPlatformContext();

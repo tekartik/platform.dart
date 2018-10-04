@@ -9,7 +9,7 @@ void main() => defineTests();
 
 void defineTests() {
   group('browser_detect', () {
-    BrowserDetectCommon browserDetect = new BrowserDetectCommon();
+    BrowserDetectCommon browserDetect = BrowserDetectCommon();
 
     _checkSingle(BrowserDetectCommon browserDetect) {
       if (browserDetect.isChrome) {
@@ -66,7 +66,7 @@ void defineTests() {
       browserDetect.userAgent =
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/601.1.56 (KHTML, like Gecko) Version/9.0 Safari/601.1.56';
       expect(browserDetect.isSafari, isTrue);
-      expect(browserDetect.browserVersion, new Version(9, 0, 0));
+      expect(browserDetect.browserVersion, Version(9, 0, 0));
       expect(browserDetect.isMobile, isFalse);
       _checkSingleBrowser();
     });
@@ -76,7 +76,7 @@ void defineTests() {
           'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729; Tablet PC 2.0; MALNJS; rv:11.0) like Gecko';
       expect(browserDetect.isIe, isTrue);
       expect(browserDetect.isEdge, isFalse);
-      expect(browserDetect.browserVersion, new Version(7, 0, 0));
+      expect(browserDetect.browserVersion, Version(7, 0, 0));
       expect(browserDetect.isMobile, isFalse);
       _checkSingleBrowser();
     });
@@ -86,7 +86,7 @@ void defineTests() {
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
       expect(browserDetect.isEdge, isTrue);
       expect(browserDetect.isIe, isFalse);
-      expect(browserDetect.browserVersion, new Version(12, 0, 0));
+      expect(browserDetect.browserVersion, Version(12, 0, 0));
       expect(browserDetect.isMobile, isFalse);
       _checkSingleBrowser();
     });
@@ -95,14 +95,13 @@ void defineTests() {
       browserDetect.userAgent =
           'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0';
       expect(browserDetect.isFirefox, isTrue);
-      expect(browserDetect.browserVersion, new Version(29, 0, 0));
+      expect(browserDetect.browserVersion, Version(29, 0, 0));
       expect(browserDetect.isMobile, isFalse);
       _checkSingleBrowser();
     });
 
     BrowserDetectCommon _fromUserAgent(String userAgent) {
-      BrowserDetectCommon detect = new BrowserDetectCommon()
-        ..userAgent = userAgent;
+      BrowserDetectCommon detect = BrowserDetectCommon()..userAgent = userAgent;
       return detect;
     }
 
@@ -143,8 +142,7 @@ void defineTests() {
       expect(browserDetect.isChromeChromium, isFalse);
       expect(browserDetect.isChromeDartium, isFalse);
       expect(browserDetect.isMobile, isFalse);
-      expect(
-          browserDetect.browserVersion, new Version(46, 0, 2490, build: '86'));
+      expect(browserDetect.browserVersion, Version(46, 0, 2490, build: '86'));
 
       _checkSingleBrowser();
 
@@ -154,8 +152,7 @@ void defineTests() {
       expect(browserDetect.isChromeChromium, isFalse);
       expect(browserDetect.isChromeDartium, isFalse);
       expect(browserDetect.isMobile, isFalse);
-      expect(
-          browserDetect.browserVersion, new Version(36, 0, 1985, build: '125'));
+      expect(browserDetect.browserVersion, Version(36, 0, 1985, build: '125'));
 
       _checkSingleBrowser();
     });
@@ -167,8 +164,7 @@ void defineTests() {
       expect(browserDetect.isChromeDartium, isFalse);
       expect(browserDetect.isChrome, isTrue);
       expect(browserDetect.isMobile, isFalse);
-      expect(
-          browserDetect.browserVersion, new Version(45, 0, 2454, build: '101'));
+      expect(browserDetect.browserVersion, Version(45, 0, 2454, build: '101'));
       _checkSingleBrowser();
     });
     test('chrome_dartium', () {
@@ -178,8 +174,7 @@ void defineTests() {
       expect(browserDetect.isChromeChromium, isFalse);
       expect(browserDetect.isChrome, isTrue);
       expect(browserDetect.isMobile, isFalse);
-      expect(
-          browserDetect.browserVersion, new Version(37, 0, 2062, build: '0'));
+      expect(browserDetect.browserVersion, Version(37, 0, 2062, build: '0'));
       _checkSingleBrowser();
     });
 
@@ -189,7 +184,7 @@ void defineTests() {
           "Mozilla/5.0 (iPad; CPU OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B176 Safari/7534.48.3";
       expect(browserDetect.isSafari, isTrue);
       expect(browserDetect.isMobile, isTrue);
-      expect(browserDetect.browserVersion, new Version(5, 1, 0));
+      expect(browserDetect.browserVersion, Version(5, 1, 0));
       //expect(browserDetect.isIos, isTrue);
       expect(browserDetect.isMobileIOS, isTrue);
       expect(browserDetect.isMobileIPad, isTrue);
@@ -204,7 +199,7 @@ void defineTests() {
           "Mozilla/5.0 (iPhone; CPU iPhone OS 9_0 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13A344 Safari/601.1";
       expect(browserDetect.isMobile, isTrue);
       expect(browserDetect.isSafari, isTrue);
-      expect(browserDetect.browserVersion, new Version(9, 0, 0));
+      expect(browserDetect.browserVersion, Version(9, 0, 0));
       expect(browserDetect.isMobileAndroid, isFalse);
       expect(browserDetect.isSafari, isTrue);
       _checkSingleBrowser();
@@ -224,8 +219,7 @@ void defineTests() {
       expect(browserDetect.isChrome, isTrue);
       expect(browserDetect.isMobileIOS, isFalse);
       expect(browserDetect.isMobileAndroid, isTrue);
-      expect(
-          browserDetect.browserVersion, new Version(46, 0, 2490, build: "76"));
+      expect(browserDetect.browserVersion, Version(46, 0, 2490, build: "76"));
       _checkSingleBrowser();
     });
   });
