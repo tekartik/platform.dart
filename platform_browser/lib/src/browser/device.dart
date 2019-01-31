@@ -4,7 +4,7 @@ import '../browser_detect_common.dart';
 
 class Device implements BrowserDevice {
   final BrowserDetectCommon _detect;
-  Device(this._detect) {}
+  Device(this._detect);
 
   @override
   bool get isMobile => _detect.isMobile;

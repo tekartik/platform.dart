@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:path/path.dart';
 import 'package:tekartik_platform/context.dart';
+import 'package:tekartik_platform_io/context_io.dart';
 
 class _Io implements Io {
   ///
@@ -13,7 +15,9 @@ class _Io implements Io {
   /// true if OS X operating system
   ///
   @override
-  bool get isMac => Platform.isMacOS;
+  bool get isMacOS => Platform.isMacOS;
+  @override
+  bool get isMac => isMacOS;
 
   ///
   /// true if Linux operating system
@@ -54,16 +58,20 @@ class _Io implements Io {
     map['platform'] = _platformText;
     return map;
   }
+
+  @override
+  bool get isIOS => Platform.isIOS;
 }
 
-class PlatformContextIo implements PlatformContext {
+class PlatformContextIoImpl implements PlatformContextIo {
   @override
   Browser get browser => null;
   @override
   Node get node => null;
 
   // non null if in io
-  _Io io = new _Io();
+  @override
+  final _Io io = _Io();
 
   @override
   String toString() => '[io] $io';
@@ -73,9 +81,27 @@ class PlatformContextIo implements PlatformContext {
     Map<String, dynamic> map = {'io': io.toMap()};
     return map;
   }
+
+  String _userAppDataPath;
+  @override
+  String get userAppDataPath =>
+      _userAppDataPath ??
+      () {
+        if (Platform.isWindows) {
+          return Platform.environment['APPDATA'];
+        }
+        return null;
+      }() ??
+      join(userHomePath, '.config');
+
+  String _userHomePath;
+  @override
+  String get userHomePath => _userHomePath ??= Platform.environment['HOME'] ??
+      Platform.environment['USERPROFILE'] ??
+      () {}();
 }
 
-PlatformContextIo _platformContextIo;
+PlatformContextIoImpl _platformContextIo;
 
 PlatformContextIo get ioPlatformContext =>
-    _platformContextIo ??= new PlatformContextIo();
+    _platformContextIo ??= PlatformContextIoImpl();

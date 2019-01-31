@@ -4,7 +4,7 @@ import '../browser_detect_common.dart';
 
 class OperatingSystemBrowser implements OperatingSystem {
   final BrowserDetectCommon _detect;
-  OperatingSystemBrowser(this._detect) {}
+  OperatingSystemBrowser(this._detect);
 
   @override
   bool get isWindows => _detect.isWindows;

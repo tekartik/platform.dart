@@ -35,7 +35,7 @@ bool isUserAgentChrome(String userAgent) {
   return !isUserAgentIe(userAgent) && canBeUserAgentChrome(userAgent);
 }
 
-main() {
+void main() {
   group('navigator', () {
     String safari9UserAgent =
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/601.1.56 (KHTML, like Gecko) Version/9.0 Safari/601.1.56";
@@ -55,7 +55,7 @@ main() {
 
     test('all', () {
       for (String userAgent in userAgents) {
-        BrowserDetectCommon detect = new BrowserDetectCommon()
+        BrowserDetectCommon detect = BrowserDetectCommon()
           ..userAgent = userAgent;
         expect(isUserAgentIe(userAgent), detect.isIe);
         expect(isUserAgentSafari(userAgent), detect.isSafari);

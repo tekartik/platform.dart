@@ -10,7 +10,7 @@ void main() => defineTests();
 
 void defineTests() {
   group('browser_operating_system', () {
-    _checkSingle(OperatingSystem operatingSystem) {
+    void _checkSingle(OperatingSystem operatingSystem) {
       if (operatingSystem.isAndroid) {
         expect(
             operatingSystem.isIOS ||
@@ -45,8 +45,8 @@ void defineTests() {
     }
 
     OperatingSystem _fromUserAgent(String userAgent) {
-      OperatingSystem os = new OperatingSystemBrowser(
-          new BrowserDetectCommon()..userAgent = userAgent);
+      OperatingSystem os =
+          OperatingSystemBrowser(BrowserDetectCommon()..userAgent = userAgent);
       _checkSingle(os);
       return os;
     }

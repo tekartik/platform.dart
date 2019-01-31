@@ -1,17 +1,17 @@
 library browser_detect_utils_common_test;
 
-import 'user_agents.dart';
-
-//import 'package:tekartik_utils/dev_utils.dart';
 import 'package:dev_test/test.dart';
 import 'package:tekartik_platform_browser/src/browser/device.dart';
 import 'package:tekartik_platform_browser/src/browser_detect_common.dart';
+
+import 'user_agents.dart';
+//import 'package:tekartik_utils/dev_utils.dart';
 
 void main() => defineTests();
 
 void defineTests() {
   group('browser_device', () {
-    _checkSingle(Device device) {
+    void _checkSingle(Device device) {
       if (device.isIPad) {
         expect(device.isIPod || device.isIPhone, isFalse);
       }
@@ -24,8 +24,7 @@ void defineTests() {
     }
 
     Device _fromUserAgent(String userAgent) {
-      Device device =
-          new Device(new BrowserDetectCommon()..userAgent = userAgent);
+      Device device = Device(BrowserDetectCommon()..userAgent = userAgent);
       _checkSingle(device);
       return device;
     }

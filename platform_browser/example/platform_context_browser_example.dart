@@ -1,25 +1,26 @@
-import 'package:tekartik_platform/context.dart';
-import 'dart:html';
 import 'dart:convert';
-
 import 'dart:core' hide print;
+import 'dart:html';
+
+import 'package:tekartik_platform/context.dart';
 import 'package:tekartik_platform_browser/context_browser.dart';
 import 'package:tekartik_platform_test/platform_context_example.dart' as common;
 
 int line = 0;
 Element out;
-displayPrint(String text) {
+
+void displayPrint(String text) {
   if (out == null) {
     out = document.body.querySelector('#out');
   }
   out.appendText('$text\n');
 }
 
-main() {
+void main() {
   run(platformContextBrowser);
 }
 
-run(PlatformContext context) {
+void run(PlatformContext context) {
   common.print = displayPrint;
   common.run(context);
 
@@ -42,6 +43,7 @@ run(PlatformContext context) {
 
 Element list;
 Map info = {};
+
 void display(String name, String value) {
   info[name] = value;
 }
