@@ -10,7 +10,7 @@ void main() => defineTests();
 
 void defineTests() {
   group('browser_operating_system', () {
-    _checkSingle(OperatingSystem operatingSystem) {
+    void _checkSingle(OperatingSystem operatingSystem) {
       if (operatingSystem.isAndroid) {
         expect(
             operatingSystem.isIOS ||

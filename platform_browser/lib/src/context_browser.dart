@@ -1,10 +1,12 @@
+import 'package:pub_semver/pub_semver.dart';
 import 'package:tekartik_platform/context.dart';
 import 'package:tekartik_platform_browser/src/browser/operating_system.dart';
+
 import 'browser_detect.dart';
-import 'package:pub_semver/pub_semver.dart';
 
 class _Device implements BrowserDevice {
   BrowserDetect _detect = BrowserDetect();
+
   _Device([this._detect]) {
     if (_detect == null) {
       _detect = BrowserDetect();
@@ -81,8 +83,10 @@ class _Browser implements Browser {
 
   @override
   bool get isChrome => _detect.isChrome;
+
   @override
   bool get isChromeChromium => _detect.isChromeChromium;
+
   @override
   bool get isChromeDartium => _detect.isChromeDartium;
 
@@ -113,10 +117,12 @@ class _Browser implements Browser {
 class _BrowserPlatformContext implements PlatformContext {
   @override
   Io get io => null;
+
   @override
   Node get node => null;
 
   // non null if in io
+  @override
   final _Browser browser = _Browser();
 
   _BrowserPlatformContext() {
@@ -134,5 +140,6 @@ class _BrowserPlatformContext implements PlatformContext {
 }
 
 PlatformContext _browserPlatformContext;
+
 PlatformContext get browserPlatformContext =>
     _browserPlatformContext ??= _BrowserPlatformContext();

@@ -41,9 +41,32 @@ abstract class Browser {
 }
 
 abstract class Io {
+  ///
+  /// true if windows operating system
+  ///
   bool get isWindows;
+
+  ///
+  /// true if OS X operating system
+  ///
+  bool get isMacOS;
+
+  /// 2019-01-31 deprecated use [isMacOS]
   bool get isMac;
+
+  ///
+  /// true if IOS operating system
+  ///
+  bool get isIOS;
+
+  ///
+  /// true if Linux operating system
+  ///
   bool get isLinux;
+
+  ///
+  /// true if Android operating system
+  ///
   bool get isAndroid;
 }
 

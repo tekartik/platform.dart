@@ -41,7 +41,7 @@ bool isUserAgentChrome(String userAgent) {
       canBeUserAgentChrome(userAgent);
 }
 
-main() {
+void main() {
   group('navigator', () {
     String safari9UserAgent =
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/601.1.56 (KHTML, like Gecko) Version/9.0 Safari/601.1.56";

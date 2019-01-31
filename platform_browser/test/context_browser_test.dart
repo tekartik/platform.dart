@@ -1,4 +1,4 @@
-@TestOn("!vm")
+@TestOn("browser")
 library string_enum_test;
 
 //import 'package:tekartik_utils/dev_utils.dart';

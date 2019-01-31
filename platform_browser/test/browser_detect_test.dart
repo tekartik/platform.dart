@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('browser_detect', () {
-    _checkSingleBrowser() {
+    void _checkSingleBrowser() {
       if (isChrome) {
         expect(isIe || isFirefox || isSafari, isFalse);
       }

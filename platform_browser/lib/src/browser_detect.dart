@@ -6,7 +6,7 @@ export 'browser_detect_common.dart';
 
 class BrowserDetect extends BrowserDetectCommon {
   @override
-  init() {
+  void init() {
     if (userAgent == null) {
       userAgent = window.navigator.userAgent;
     }

@@ -1,4 +1,4 @@
-/// exported for testing only
+// exported for testing only
 library tekartik_platform_context.src.browser_detect_common;
 
 import 'package:pub_semver/pub_semver.dart';
@@ -7,29 +7,29 @@ import 'package:pub_semver/pub_semver.dart';
 bool get isRunningAsJavascript => identical(1.0, 1);
 
 /// Regex that matches a version number at the beginning of a string.
-final _START_VERSION = RegExp(r'^' // Start at beginning.
+final _startVersion = RegExp(r'^' // Start at beginning.
     r'(\d+).((\d+))?' // Version number.
     );
 
-/// Like [_START_VERSION] but matches the entire string.
-final _COMPLETE_VERSION = RegExp("${_START_VERSION.pattern}\$");
+/// Like [_startVersion] but matches the entire string.
+final _completeVersion = RegExp("${_startVersion.pattern}\$");
 
 // Handle String with 4 numbers
 /// Regex that matches a version number at the beginning of a string.
-final _FOUR_NUMBER_START_VERSION = RegExp(r'^' // Start at beginning.
+final _fourNumbersStartVersion = RegExp(r'^' // Start at beginning.
         r'(\d+).(\d+).(\d+).([0-9A-Za-z-]*)') // Version number.
     ;
 
-/// Like [_START_VERSION] but matches the entire string.
-final _FOUR_NUMBER_COMPLETE_VERSION =
-    RegExp("${_FOUR_NUMBER_START_VERSION.pattern}\$");
+/// Like [_startVersion] but matches the entire string.
+final _fourNumbersCompleteVersion =
+    RegExp("${_fourNumbersStartVersion.pattern}\$");
 
 /// Add support for version X, X.X not supported in platform version
 Version parseVersion(String text) {
   try {
     return Version.parse(text);
   } on FormatException catch (e, _) {
-    Match match = _COMPLETE_VERSION.firstMatch(text);
+    Match match = _completeVersion.firstMatch(text);
     if (match != null) {
       try {
         //      print(match[0]);
@@ -43,7 +43,7 @@ Version parseVersion(String text) {
         throw e;
       }
     } else {
-      match = _FOUR_NUMBER_COMPLETE_VERSION.firstMatch(text);
+      match = _fourNumbersCompleteVersion.firstMatch(text);
       if (match != null) {
         try {
           //      print(match[0]);
@@ -236,8 +236,8 @@ class BrowserDetectCommon {
 
   String get userAgent => _userAgent;
 
-  set userAgent(String userAgent_) {
-    this._userAgent = userAgent_;
+  set userAgent(String userAgent) {
+    this._userAgent = userAgent;
 
     // Navigator
     _isFirefox = null;
@@ -260,5 +260,5 @@ class BrowserDetectCommon {
     }
   }
 
-  init() {}
+  void init() {}
 }

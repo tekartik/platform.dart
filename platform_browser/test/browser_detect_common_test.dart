@@ -11,7 +11,7 @@ void defineTests() {
   group('browser_detect', () {
     BrowserDetectCommon browserDetect = BrowserDetectCommon();
 
-    _checkSingle(BrowserDetectCommon browserDetect) {
+    void _checkSingle(BrowserDetectCommon browserDetect) {
       if (browserDetect.isChrome) {
         expect(
             browserDetect.isIe ||
@@ -52,7 +52,7 @@ void defineTests() {
       }
     }
 
-    _checkSingleBrowser() {
+    void _checkSingleBrowser() {
       _checkSingle(browserDetect);
     }
 
@@ -75,6 +75,7 @@ void defineTests() {
       browserDetect.userAgent =
           'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729; Tablet PC 2.0; MALNJS; rv:11.0) like Gecko';
       expect(browserDetect.isIe, isTrue);
+      expect(browserDetect.browserVersion, Version(7, 0, 0));
       expect(browserDetect.isEdge, isFalse);
       expect(browserDetect.browserVersion, Version(7, 0, 0));
       expect(browserDetect.isMobile, isFalse);
@@ -131,7 +132,6 @@ void defineTests() {
           "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/45.0.2454.101 Chrome/45.0.2454.101 Safari/537.36");
       expect(detect.isLinux, isTrue);
       _checkSingle(detect);
-      ;
     });
 
     test('chrome', () {

@@ -40,7 +40,7 @@ class PlatformContextNode implements PlatformContext {
 
   NodeImpl _node;
 
-  NodeImpl get node => _node ??= new NodeImpl();
+  NodeImpl get node => _node ??= NodeImpl();
 
   @override
   String toString() => '[node] $node';
@@ -55,4 +55,4 @@ class PlatformContextNode implements PlatformContext {
 PlatformContextNode _platformContextNode;
 
 PlatformContextNode get platformContextNode =>
-    _platformContextNode ??= new PlatformContextNode();
+    _platformContextNode ??= PlatformContextNode();
