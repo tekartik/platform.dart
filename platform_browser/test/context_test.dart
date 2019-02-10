@@ -80,10 +80,11 @@ void defineTests() {
       _checkSingleBrowser();
     });
 
-    test('ie_edge', () {
+    test('edge', () {
       browserDetect.userAgent =
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
-      expect(browserDetect.isIe, isTrue);
+      expect(browserDetect.isIe, isFalse);
+      expect(browserDetect.isEdge, isTrue);
       expect(browserDetect.browserVersion, Version(12, 0, 0));
       expect(browserDetect.isMobile, isFalse);
       _checkSingleBrowser();

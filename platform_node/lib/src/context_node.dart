@@ -34,12 +34,15 @@ class NodeImpl implements Node {
 }
 
 class PlatformContextNode implements PlatformContext {
+  @override
   Browser get browser => null;
 
+  @override
   Io get io => null;
 
   NodeImpl _node;
 
+  @override
   NodeImpl get node => _node ??= NodeImpl();
 
   @override
