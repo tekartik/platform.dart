@@ -1,10 +1,10 @@
-import 'package:tekartik_platform/context.dart';
-
 import 'dart:core' hide print;
+
+import 'package:tekartik_platform/context.dart';
 
 Function print;
 
-run(PlatformContext context) {
+void run(PlatformContext context) {
   if (context.io != null) {
     if (context.io.isWindows) {
       print('We are on Windows');

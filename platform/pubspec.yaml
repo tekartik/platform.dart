@@ -7,6 +7,11 @@ environment:
 dependencies:
   pub_semver: '>=1.4.1'
   collection: '>=1.14.10'
+  tekartik_common_utils:
+    git:
+      url: git://github.com/tekartik/common_utils.dart
+      ref: dart2
+    version: '>=0.9.3'
 
 dev_dependencies:
   test: any
