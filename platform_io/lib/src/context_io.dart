@@ -1,21 +1,24 @@
-import 'dart:io';
+import 'dart:io' as io;
 
-import 'package:path/path.dart';
+import 'package:process_run/shell.dart' as shell;
 import 'package:tekartik_platform/context.dart';
+// ignore: implementation_imports
+import 'package:tekartik_platform/src/platform_mixin.dart';
 import 'package:tekartik_platform_io/context_io.dart';
 
-class _Io implements Io {
+class _Io with PlatformMixin implements Io {
   ///
   /// true if windows operating system
   ///
   @override
-  bool get isWindows => Platform.isWindows;
+  bool get isWindows => io.Platform.isWindows;
 
   ///
   /// true if OS X operating system
   ///
   @override
-  bool get isMacOS => Platform.isMacOS;
+  bool get isMacOS => io.Platform.isMacOS;
+
   @override
   bool get isMac => isMacOS;
 
@@ -23,18 +26,18 @@ class _Io implements Io {
   /// true if Linux operating system
   ///
   @override
-  bool get isLinux => Platform.isLinux;
+  bool get isLinux => io.Platform.isLinux;
 
   ///
   /// true if Android operating system
   ///
   @override
-  bool get isAndroid => Platform.isAndroid;
+  bool get isAndroid => io.Platform.isAndroid;
 
   ///
   /// get the version as string
   ///
-  String get versionText => Platform.version;
+  String get versionText => io.Platform.version;
 
   String get _platformText {
     String platform;
@@ -53,19 +56,24 @@ class _Io implements Io {
   @override
   String toString() => toMap().toString();
 
-  Map toMap() {
-    Map map = {};
+  Map<String, dynamic> toMap() {
+    var map = <String, dynamic>{};
     map['platform'] = _platformText;
+    map = getPlatformInfoMap(map);
     return map;
   }
 
   @override
-  bool get isIOS => Platform.isIOS;
+  bool get isIOS => io.Platform.isIOS;
+
+  @override
+  Map<String, String> get environment => io.Platform.environment;
 }
 
 class PlatformContextIoImpl implements PlatformContextIo {
   @override
   Browser get browser => null;
+
   @override
   Node get node => null;
 
@@ -82,23 +90,14 @@ class PlatformContextIoImpl implements PlatformContextIo {
     return map;
   }
 
-  String _userAppDataPath;
   @override
-  String get userAppDataPath =>
-      _userAppDataPath ??
-      () {
-        if (Platform.isWindows) {
-          return Platform.environment['APPDATA'];
-        }
-        return null;
-      }() ??
-      join(userHomePath, '.config');
+  String get userAppDataPath => shell.userAppDataPath;
 
-  String _userHomePath;
   @override
-  String get userHomePath => _userHomePath ??= Platform.environment['HOME'] ??
-      Platform.environment['USERPROFILE'] ??
-      () {}();
+  String get userHomePath => shell.userHomePath;
+
+  @override
+  Platform get platform => io;
 }
 
 PlatformContextIoImpl _platformContextIo;

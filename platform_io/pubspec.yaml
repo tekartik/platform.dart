@@ -1,11 +1,10 @@
 name: tekartik_platform_io
 description: Platform io
-version: 0.1.1
-#homepage: https://www.example.com
-#author: alex <email@example.com>
+version: 0.2.0
+publish_to: none
 
 environment:
-  sdk: '>=2.0.0-dev.58 <3.0.0'
+  sdk: '>=2.1.0 <3.0.0'
 
 dependencies:
   path: '>1.4.0'
@@ -14,7 +13,8 @@ dependencies:
       url: git://github.com/tekartik/platform.dart
       path: platform
       ref: dart2
-    version: '>=0.1.0'
+    version: '>=0.2.0'
+  process_run: '>=0.10.0+1'
 
 dev_dependencies:
   test: ">=1.2.0"

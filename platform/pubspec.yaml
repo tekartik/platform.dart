@@ -1,8 +1,10 @@
 name: tekartik_platform
-version: 0.1.0
+version: 0.2.0
 description: Get the global platform context
+publish_to: none
+
 environment:
-  sdk: '>=2.0.0-dev.58 <3.0.0'
+  sdk: '>=2.1.0 <3.0.0'
 
 dependencies:
   pub_semver: '>=1.4.1'
@@ -23,3 +25,4 @@ dev_dependencies:
   build_runner: ">=0.8.8"
   build_test: ">=0.10.2"
   build_web_compilers: '>=0.4.0'
+  process_run: '>=0.10.0+1'

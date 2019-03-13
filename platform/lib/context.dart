@@ -4,9 +4,13 @@ import 'package:pub_semver/pub_semver.dart';
 
 abstract class OperatingSystem {
   bool get isWindows;
+
   bool get isMac;
+
   bool get isLinux;
+
   bool get isAndroid;
+
   bool get isIOS;
 }
 
@@ -14,20 +18,27 @@ abstract class BrowserDevice {
   bool get isMobile;
 
   bool get isIPad;
+
   bool get isIPod;
+
   bool get isIPhone;
 }
 
 abstract class Browser {
   OperatingSystem get os;
+
   BrowserDevice get device;
 
   bool get isIe;
+
   bool get isFirefox;
+
   bool get isSafari;
 
   bool get isChrome;
+
   bool get isChromeDartium;
+
   bool get isChromeChromium;
 
   // browser version
@@ -40,7 +51,28 @@ abstract class Browser {
   bool get isMobile;
 }
 
-abstract class Io {
+abstract class Io extends Platform {
+  /// 2019-01-31 deprecated use [isMacOS]
+  bool get isMac;
+
+  ///
+  /// true if IOS operating system
+  ///
+  bool get isIOS;
+
+  ///
+  /// true if Android operating system
+  ///
+  bool get isAndroid;
+}
+
+abstract class Node extends Platform {
+  /// 2019-01-31 deprecated use [isMacOS]
+  bool get isMac;
+}
+
+/// Common platform for io & node
+abstract class Platform {
   ///
   /// true if windows operating system
   ///
@@ -51,41 +83,29 @@ abstract class Io {
   ///
   bool get isMacOS;
 
-  /// 2019-01-31 deprecated use [isMacOS]
-  bool get isMac;
-
-  ///
-  /// true if IOS operating system
-  ///
-  bool get isIOS;
-
   ///
   /// true if Linux operating system
   ///
   bool get isLinux;
 
-  ///
-  /// true if Android operating system
-  ///
-  bool get isAndroid;
+  /// Environment variables
+  Map<String, String> get environment;
 }
 
-abstract class Node {
-  bool get isWindows;
-  bool get isMac;
-  bool get isLinux;
-}
-
+/// Common platform context
 abstract class PlatformContext {
-  // non null if in a browser
+  /// non null if in a browser
   Browser get browser;
 
-  // non null if in io
+  /// Non null for io & node
+  Platform get platform;
+
+  /// non null if in io
   Io get io;
 
-  // non null if in node
+  //// non null if in node
   Node get node;
 
-  // for debugging
+  /// for debugging
   Map<String, dynamic> toMap();
 }

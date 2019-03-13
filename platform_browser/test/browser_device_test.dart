@@ -42,7 +42,7 @@ void defineTests() {
 
     test('iPad', () {
       // iPad2
-      var device = _fromUserAgent(iPad2_Safari_OS9);
+      var device = _fromUserAgent(iPad2SafariOS9);
       expect(device.isIPad, isTrue);
     });
 
