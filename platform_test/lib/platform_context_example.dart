@@ -6,15 +6,21 @@ Function print;
 
 void run(PlatformContext context) {
   if (context.io != null) {
-    if (context.io.isWindows) {
-      print('We are on Windows');
-    } else if (context.io.isMac) {
-      print('We are on Mac');
-    } else if (context.io.isLinux) {
-      print('We are on Linux');
-    } else if (context.io.isAndroid) {
+    final io = context.io;
+    if (io.isAndroid) {
       print('We are on Android');
     }
+  }
+  if (context.platform != null) {
+    final platform = context.platform;
+    if (platform.isWindows) {
+      print('We are on Windows');
+    } else if (platform.isMacOS) {
+      print('We are on Mac');
+    } else if (platform.isLinux) {
+      print('We are on Linux');
+    }
+    print('environment: ${platform.environment}');
   }
   if (context.browser != null) {
     if (context.browser.isChrome) {

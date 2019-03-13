@@ -1,12 +1,14 @@
 import 'package:node_io/node_io.dart' as node;
 import 'package:tekartik_platform/context.dart';
+// ignore: implementation_imports
+import 'package:tekartik_platform/src/platform_mixin.dart';
 
-class NodeImpl implements Node {
+class NodeImpl with PlatformMixin implements Node {
   @override
   bool get isLinux => node.Platform.isLinux;
 
   @override
-  bool get isMac => node.Platform.isMacOS;
+  bool get isMac => isMacOS;
 
   @override
   bool get isWindows => node.Platform.isWindows;
@@ -26,9 +28,16 @@ class NodeImpl implements Node {
   @override
   String toString() => toMap().toString();
 
-  Map toMap() {
-    Map map = {};
+  @override
+  Map<String, String> get environment => node.Platform.environment;
+
+  @override
+  bool get isMacOS => node.Platform.isMacOS;
+
+  Map<String, dynamic> toMap() {
+    var map = <String, dynamic>{};
     map['platform'] = _platformText;
+    map = getPlatformInfoMap(map);
     return map;
   }
 }
@@ -53,6 +62,9 @@ class PlatformContextNode implements PlatformContext {
     Map<String, dynamic> map = {'node': node.toMap()};
     return map;
   }
+
+  @override
+  Platform get platform => node;
 }
 
 PlatformContextNode _platformContextNode;

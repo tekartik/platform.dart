@@ -137,6 +137,9 @@ class _BrowserPlatformContext implements PlatformContext {
     Map<String, dynamic> map = {'browser': browser.toMap()};
     return map;
   }
+
+  @override
+  Platform get platform => null;
 }
 
 PlatformContext _browserPlatformContext;

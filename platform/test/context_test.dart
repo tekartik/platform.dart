@@ -15,6 +15,9 @@ class PlatformContextFake implements PlatformContext {
   Map<String, dynamic> toMap() {
     return {};
   }
+
+  @override
+  Platform get platform => null;
 }
 
 void main() {
