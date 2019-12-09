@@ -39,7 +39,7 @@ class OperatingSystemBrowser implements OperatingSystem {
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{};
-    String platform = _platformText;
+    final platform = _platformText;
     if (_platformText != null) {
       map['platform'] = platform;
     }

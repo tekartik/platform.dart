@@ -86,7 +86,7 @@ class PlatformContextIoImpl implements PlatformContextIo {
 
   @override
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = {'io': io.toMap()};
+    final map = <String, dynamic>{'io': io.toMap()};
     return map;
   }
 

@@ -12,7 +12,7 @@ final _startVersion = RegExp(r'^' // Start at beginning.
     );
 
 /// Like [_startVersion] but matches the entire string.
-final _completeVersion = RegExp("${_startVersion.pattern}\$");
+final _completeVersion = RegExp('${_startVersion.pattern}\$');
 
 // Handle String with 4 numbers
 /// Regex that matches a version number at the beginning of a string.
@@ -22,7 +22,7 @@ final _fourNumbersStartVersion = RegExp(r'^' // Start at beginning.
 
 /// Like [_startVersion] but matches the entire string.
 final _fourNumbersCompleteVersion =
-    RegExp("${_fourNumbersStartVersion.pattern}\$");
+    RegExp('${_fourNumbersStartVersion.pattern}\$');
 
 /// Add support for version X, X.X not supported in platform version
 Version parseVersion(String text) {
@@ -35,8 +35,8 @@ Version parseVersion(String text) {
         //      print(match[0]);
         //      print(match[1]);
         //      print(match[2]);
-        int major = int.parse(match[1]);
-        int minor = int.parse(match[2]);
+        final major = int.parse(match[1]);
+        final minor = int.parse(match[2]);
 
         return Version(major, minor, 0);
       } on FormatException catch (_) {
@@ -49,10 +49,10 @@ Version parseVersion(String text) {
           //      print(match[0]);
           //      print(match[1]);
           //      print(match[2]);
-          int major = int.parse(match[1]);
-          int minor = int.parse(match[2]);
-          int patch = int.parse(match[3]);
-          String build = match[4];
+          final major = int.parse(match[1]);
+          final minor = int.parse(match[2]);
+          final patch = int.parse(match[3]);
+          final build = match[4];
 
           return Version(major, minor, patch, build: build);
         } on FormatException catch (_) {
@@ -68,10 +68,10 @@ Version parseVersion(String text) {
 class BrowserDetectCommon {
   // Handle stuff like 'Trident/7.0, Chrome/29.0...'
   bool _checkAndGetVersion(String name) {
-    int index = _userAgent.indexOf(name);
+    final index = _userAgent.indexOf(name);
     if (index >= 0) {
-      String versionString = _userAgent.substring(index + name.length + 1);
-      int endVersion = versionString.indexOf(' ');
+      var versionString = _userAgent.substring(index + name.length + 1);
+      var endVersion = versionString.indexOf(' ');
       if (endVersion >= 0) {
         versionString = versionString.substring(0, endVersion);
       }
@@ -169,36 +169,18 @@ class BrowserDetectCommon {
 
   // on chrome
   // on ie:  For Windows environments, value Windows NT 6.3 stands for Win 8.1, Windows NT 6.2 for Win 8, Windows NT 6.1 for Win 7 and so on
-  bool get isWindows {
-    if (_isWindows == null) {
-      _isWindows = _userAgent.contains('Windows');
-    }
-    return _isWindows;
-  }
+  bool get isWindows => _isWindows ??= _userAgent.contains('Windows');
 
-  bool get isMac {
-    if (_isMac == null) {
-      _isMac = _userAgent.contains('Macintosh');
-    }
-    return _isMac;
-  }
+  bool get isMac => _isMac ??= _userAgent.contains('Macintosh');
 
-  bool get isLinux {
-    if (_isLinux == null) {
-      _isLinux = _userAgent.contains('Linux');
-    }
-    return _isLinux;
-  }
+  bool get isLinux => _isLinux ??= _userAgent.contains('Linux');
 
   // every browser can be mobile
-  bool get isMobile {
-    if (_isMobile == null) {
-      _isMobile = _userAgent.contains('Mobile/') ||
-          _userAgent.contains('Mobile ') ||
-          _userAgent.contains(' Mobile');
-    }
-    return _isMobile;
-  }
+  bool get isMobile => _isMobile ??= () {
+        return _userAgent.contains('Mobile/') ||
+            _userAgent.contains('Mobile ') ||
+            _userAgent.contains(' Mobile');
+      }();
 
   bool get isMobileIOS {
     return isMobile && (_canBeIPad || _canBeIPod || _canBeIPhone);
@@ -237,7 +219,7 @@ class BrowserDetectCommon {
   String get userAgent => _userAgent;
 
   set userAgent(String userAgent) {
-    this._userAgent = userAgent;
+    _userAgent = userAgent;
 
     // Navigator
     _isFirefox = null;
