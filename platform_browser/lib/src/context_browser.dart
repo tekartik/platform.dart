@@ -5,12 +5,10 @@ import 'package:tekartik_platform_browser/src/browser/operating_system.dart';
 import 'browser_detect.dart';
 
 class _Device implements BrowserDevice {
-  BrowserDetect _detect = BrowserDetect();
+  BrowserDetect _detect;
 
   _Device([this._detect]) {
-    if (_detect == null) {
-      _detect = BrowserDetect();
-    }
+    _detect ??= BrowserDetect();
   }
 
   @override
@@ -30,7 +28,7 @@ class _Device implements BrowserDevice {
 }
 
 class _Browser implements Browser {
-  BrowserDetect _detect = BrowserDetect();
+  final _detect = BrowserDetect();
 
   OperatingSystemBrowser _os;
   BrowserDevice _device;
@@ -61,8 +59,8 @@ class _Browser implements Browser {
   @override
   String toString() => toMap().toString();
 
-  Map toMap() {
-    Map map = {};
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
     map['navigator'] = navigatorText;
     map['version'] = version.toString();
     map['os'] = os.toMap();
@@ -98,20 +96,10 @@ class _Browser implements Browser {
   bool get isMobile => _detect.isMobile;
 
   @override
-  OperatingSystemBrowser get os {
-    if (_os == null) {
-      _os = OperatingSystemBrowser(_detect);
-    }
-    return _os;
-  }
+  OperatingSystemBrowser get os => _os ??= OperatingSystemBrowser(_detect);
 
   @override
-  BrowserDevice get device {
-    if (_device == null) {
-      _device = _Device(_detect);
-    }
-    return _device;
-  }
+  BrowserDevice get device => _device ??= _Device(_detect);
 }
 
 class _BrowserPlatformContext implements PlatformContext {
@@ -134,7 +122,7 @@ class _BrowserPlatformContext implements PlatformContext {
 
   @override
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = {'browser': browser.toMap()};
+    final map = <String, dynamic>{'browser': browser.toMap()};
     return map;
   }
 
