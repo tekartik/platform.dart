@@ -98,9 +98,17 @@ class BrowserDetectCommon {
   bool _isMac;
   bool _isLinux;
 
-  bool _isIos;
+  Version get browserVersion => _browserVersion ??= () {
+        // Check all platforms
+        isIe;
+        isEdge;
+        isChrome;
+        isChromeChromium;
+        isSafari;
+        isFirefox;
+        return _browserVersion;
+      }();
 
-  Version get browserVersion => _browserVersion;
   bool get isIe {
     if (_isIe == null) {
       init();
@@ -119,17 +127,8 @@ class BrowserDetectCommon {
     return _isEdge;
   }
 
-  bool get isIos {
-    if (_isIos == null) {
-      init();
-      // Edge 12 and over
-      _isIe = _checkAndGetVersion('Edge');
-      if (_isIe == false) {
-        _isIe = _checkAndGetVersion('Trident');
-      }
-    }
-    return _isIe;
-  }
+  // to deprecate
+  bool get isIos => isMobileIOS;
 
   bool get isChrome {
     if (_isChrome == null) {
@@ -230,7 +229,6 @@ class BrowserDetectCommon {
 
     _isMobile = null;
     _browserVersion = null;
-    _isIos = null;
 
     if (_userAgent != null) {
       // ie/edge is tricky as it sets others

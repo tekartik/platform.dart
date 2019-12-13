@@ -191,6 +191,26 @@ void defineTests() {
       expect(browserDetect.isMobileAndroid, isFalse);
     });
 
+    test('Mobile Safari 12', () {
+      browserDetect.userAgent =
+          'Mozilla/5.0 (iPod touch; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1';
+      // Important to test first
+      expect(browserDetect.browserVersion, Version(12, 0, 0));
+      expect(browserDetect.isSafari, isTrue);
+      expect(browserDetect.isMobile, isTrue);
+
+      expect(browserDetect.isMobileIOS, isTrue);
+    });
+
+    test('Mobile Safari 13', () {
+      // After Apple's iOS 13 reales, I realized window.navigator.userAgent in Safari on iPad iOS 13 is same as on MacOS. Something like this:
+      //
+      //Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15
+      browserDetect.userAgent =
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15';
+      // expect(browserDetect.isMobileIOS, isTrue);
+      expect(browserDetect.browserVersion, Version(13, 0, 0));
+    });
     test('mobile', () {
       // iOS9 Safari
       browserDetect.userAgent =
