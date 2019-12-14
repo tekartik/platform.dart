@@ -7,20 +7,13 @@ export 'browser_detect_common.dart';
 class BrowserDetect extends BrowserDetectCommon {
   @override
   void init() {
-    if (userAgent == null) {
-      userAgent = window.navigator.userAgent;
-    }
+    userAgent ??= window.navigator.userAgent;
   }
 }
 
 BrowserDetect _browserDetect;
 
-BrowserDetect get browserDetect {
-  if (_browserDetect == null) {
-    _browserDetect = BrowserDetect();
-  }
-  return _browserDetect;
-}
+BrowserDetect get browserDetect => _browserDetect ??= BrowserDetect();
 
 bool get isIe => browserDetect.isIe;
 bool get isEdge => browserDetect.isEdge;

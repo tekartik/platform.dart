@@ -10,9 +10,7 @@ int line = 0;
 Element out;
 
 void displayPrint(String text) {
-  if (out == null) {
-    out = document.body.querySelector('#out');
-  }
+  out ??= document.body.querySelector('#out');
   out.appendText('$text\n');
 }
 

@@ -1,11 +1,11 @@
 name: tekartik_platform_node
 description: Platform node
-version: 0.2.0
+version: 0.2.1
 #homepage: https://www.example.com
 #author: alex <email@example.com>
 
 environment:
-  sdk: '>=2.1.0 <3.0.0'
+  sdk: '>=2.5.0 <3.0.0'
 
 dependencies:
   tekartik_platform:
@@ -13,7 +13,7 @@ dependencies:
       url: git://github.com/tekartik/platform.dart
       path: platform
       ref: dart2
-    version: '>=0.2.0'
+    version: '>=0.2.1'
   node_io: '>=1.0.1+2'
   path: '>=1.6.1'
 

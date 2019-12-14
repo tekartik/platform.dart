@@ -59,7 +59,7 @@ class PlatformContextNode implements PlatformContext {
 
   @override
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = {'node': node.toMap()};
+    final map = <String, dynamic>{'node': node.toMap()};
     return map;
   }
 

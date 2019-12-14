@@ -1,4 +1,4 @@
-@TestOn("browser")
+@TestOn('browser')
 library string_enum_test;
 
 //import 'package:tekartik_utils/dev_utils.dart';
@@ -33,24 +33,24 @@ void main() {
 
     test('chrome', () {
       expect(isChrome, isTrue);
-    }, testOn: "chrome");
+    }, testOn: 'chrome');
 
     /*
     test('dartium', () {
       expect(isChromeDartium, isTrue);
-    }, testOn: "dartium || content-shell");
+    }, testOn: 'dartium || content-shell');
     */
 
     test('firefox', () {
       expect(isFirefox, isTrue);
-    }, testOn: "firefox");
+    }, testOn: 'firefox');
 
     test('ie', () {
       expect(isIe, isTrue);
-    }, testOn: "ie");
+    }, testOn: 'ie');
 
     test('safari', () {
       expect(isSafari, isTrue);
-    }, testOn: "safari");
+    }, testOn: 'safari');
   });
 }
