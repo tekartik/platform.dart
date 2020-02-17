@@ -22,6 +22,8 @@ abstract class BrowserDevice {
   bool get isIPod;
 
   bool get isIPhone;
+
+  bool get supportsTouch;
 }
 
 abstract class Browser {

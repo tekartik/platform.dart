@@ -11,6 +11,7 @@ void main() {
 
     test('browser', () {
       print(platformContextBrowser.browser.isMobile);
+      print(platformContextBrowser.browser.device.supportsTouch);
     });
   });
 }

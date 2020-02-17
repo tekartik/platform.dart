@@ -5,6 +5,10 @@ import 'browser_detect_common.dart';
 export 'browser_detect_common.dart';
 
 class BrowserDetect extends BrowserDetectCommon {
+  bool get supportsTouch => window.navigator.maxTouchPoints != null
+      ? window.navigator.maxTouchPoints > 0
+      : TouchEvent.supported;
+
   @override
   void init() {
     userAgent ??= window.navigator.userAgent;

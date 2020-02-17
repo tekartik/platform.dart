@@ -4,6 +4,7 @@ import '../browser_detect_common.dart';
 
 class Device implements BrowserDevice {
   final BrowserDetectCommon _detect;
+
   Device(this._detect);
 
   @override
@@ -18,8 +19,6 @@ class Device implements BrowserDevice {
   @override
   bool get isIPod => _detect.isMobileIPod;
 
-  /*
   @override
-  bool get isFormatTablet => _detect.isFormatTablet;
-  */
+  bool get supportsTouch => false;
 }

@@ -39,5 +39,9 @@ void main() {
       expect(context.browser.isSafari, isTrue);
       expect(context.browser.isDartVm, isFalse);
     }, testOn: 'safari');
+
+    test('supportsTouch', () {
+      expect(context.browser.device.supportsTouch, isNotNull);
+    });
   });
 }
