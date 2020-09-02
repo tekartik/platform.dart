@@ -13,19 +13,23 @@ jobs:
     - stage: stable
       script: dart ./tool/travis.dart
       dart: stable
+    - stage: beta
+      script: dart ./tool/travis.dart
+      dart: beta
     - stage: dev
       script: dart ./tool/travis.dart
       dart: dev
 
 stages:
   - stable
+  - beta
   - dev
 
 # Only building master means that we don't run two builds for each pull request.
-branches:
-  only:
-    - master
-    - dart2
+# branches:
+#  only:
+#    - master
+#    - dart2
 
 cache:
   directories:
