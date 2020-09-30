@@ -1,5 +1,1 @@
-import 'package:tekartik_platform/context.dart';
-
-import 'src/context_node.dart' as node;
-
-PlatformContext get platformContextNode => node.platformContextNode;
+export 'src/export/export.dart' show platformContextNode;
