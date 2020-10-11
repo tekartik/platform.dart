@@ -55,6 +55,18 @@ void run(PlatformContext context) {
     if (context.browser.isMobile) {
       print('We are on Mobile');
     }
+    if (context.browser.device.isIPod) {
+      print('We are on Ipod device');
+    }
+    if (context.browser.device.isIPad) {
+      print('We are on Ipad device');
+    }
+    if (context.browser.device.isIPhone) {
+      print('We are on Iphone device');
+    }
+    if (context.browser.device.supportsTouch) {
+      print('Touch supported');
+    }
 
     if (context.browser.isDartVm) {
       print('We are running on a browser Dart VM');

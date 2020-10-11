@@ -22,6 +22,8 @@ abstract class BrowserDevice {
   bool get isIPod;
 
   bool get isIPhone;
+
+  bool get supportsTouch;
 }
 
 abstract class Browser {
@@ -103,7 +105,7 @@ abstract class PlatformContext {
   /// non null if in io
   Io get io;
 
-  //// non null if in node
+  /// non null if in node
   Node get node;
 
   /// for debugging

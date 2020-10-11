@@ -102,5 +102,5 @@ class PlatformContextIoImpl implements PlatformContextIo {
 
 PlatformContextIoImpl _platformContextIo;
 
-PlatformContextIo get ioPlatformContext =>
+PlatformContextIo get platformContextIo =>
     _platformContextIo ??= PlatformContextIoImpl();

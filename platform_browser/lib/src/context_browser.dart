@@ -14,17 +14,17 @@ class _Device implements BrowserDevice {
   @override
   bool get isMobile => _detect.isMobile;
 
-  // TODO: implement isPad
   @override
   bool get isIPad => _detect.isMobileIPad;
 
-  // TODO: implement isPhone
   @override
   bool get isIPhone => _detect.isMobileIPhone;
 
-  // TODO: implement isPod
   @override
   bool get isIPod => _detect.isMobileIPod;
+
+  @override
+  bool get supportsTouch => _detect.supportsTouch;
 }
 
 class _Browser implements Browser {

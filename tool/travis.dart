@@ -10,6 +10,7 @@ Future main() async {
     'platform_node',
     'platform_test',
   ]) {
+    print('package: $dir');
     shell = shell.pushd(dir);
     await shell.run('''
     
