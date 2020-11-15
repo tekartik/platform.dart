@@ -4,7 +4,7 @@ description: Get the global platform context
 publish_to: none
 
 environment:
-  sdk: '>=2.9.0 <3.0.0'
+  sdk: '>=2.10.0-0 <3.0.0'
 
 dependencies:
   pub_semver: any
@@ -29,5 +29,4 @@ dev_dependencies:
 dependency_overrides:
   tekartik_platform:
     path: ../platform
-
 
