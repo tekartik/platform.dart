@@ -1,11 +1,12 @@
 name: tekartik_platform_node
 description: Platform node
 version: 0.3.0
+publish_to: none
 #homepage: https://www.example.com
 #author: alex <email@example.com>
 
 environment:
-  sdk: '>=2.9.0 <3.0.0'
+  sdk: '>=2.10.0-0 <3.0.0'
 
 dependencies:
   tekartik_platform:
