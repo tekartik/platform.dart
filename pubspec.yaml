@@ -10,7 +10,7 @@ environment:
 
 dev_dependencies:
   test: ">=1.2.0"
-  dev_test: any
+  dev_test: '>=0.13.0'
   grinder: any
   tekartik_build_utils:
     git:
