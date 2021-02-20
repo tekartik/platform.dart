@@ -40,7 +40,7 @@ class _Io with PlatformMixin implements Io {
   String get versionText => io.Platform.version;
 
   String get _platformText {
-    String platform;
+    late String platform;
     if (isLinux) {
       platform = 'linux';
     } else if (isMac) {
@@ -49,6 +49,10 @@ class _Io with PlatformMixin implements Io {
       platform = 'windows';
     } else if (isAndroid) {
       platform = 'android';
+    } else if (isIOS) {
+      platform = 'ios';
+    } else {
+      platform = 'unknown';
     }
     return platform;
   }
@@ -72,10 +76,10 @@ class _Io with PlatformMixin implements Io {
 
 class PlatformContextIoImpl implements PlatformContextIo {
   @override
-  Browser get browser => null;
+  Browser? get browser => null;
 
   @override
-  Node get node => null;
+  Node? get node => null;
 
   // non null if in io
   @override
@@ -100,7 +104,7 @@ class PlatformContextIoImpl implements PlatformContextIo {
   Platform get platform => io;
 }
 
-PlatformContextIoImpl _platformContextIo;
+PlatformContextIoImpl? _platformContextIo;
 
 PlatformContextIo get platformContextIo =>
     _platformContextIo ??= PlatformContextIoImpl();

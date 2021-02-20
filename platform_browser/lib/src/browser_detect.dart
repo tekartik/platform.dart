@@ -6,7 +6,7 @@ export 'browser_detect_common.dart';
 
 class BrowserDetect extends BrowserDetectCommon {
   bool get supportsTouch => window.navigator.maxTouchPoints != null
-      ? window.navigator.maxTouchPoints > 0
+      ? window.navigator.maxTouchPoints! > 0
       : TouchEvent.supported;
 
   @override
@@ -15,7 +15,7 @@ class BrowserDetect extends BrowserDetectCommon {
   }
 }
 
-BrowserDetect _browserDetect;
+BrowserDetect? _browserDetect;
 
 BrowserDetect get browserDetect => _browserDetect ??= BrowserDetect();
 

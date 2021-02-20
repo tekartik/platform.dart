@@ -1,4 +1,4 @@
-name: tekartik_platform_repo
+name: platform_repo_spport
 description: Platform repo (tools)
 version: 0.2.0
 publish_to: none
@@ -11,12 +11,6 @@ environment:
 dev_dependencies:
   test: ">=1.2.0"
   dev_test: '>=0.13.0'
-  grinder: any
-  tekartik_build_utils:
-    git:
-      url: git://github.com/tekartik/build_utils.dart
-      ref: dart2
-    version: '>=0.6.5+1'
   # test dependencies without version
   tekartik_platform_io:
     git:

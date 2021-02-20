@@ -22,7 +22,7 @@ class OperatingSystemBrowser implements OperatingSystem {
   bool get isIOS => _detect.isMobileIOS;
 
   String get _platformText {
-    String platform;
+    late String platform;
     if (isWindows) {
       platform = 'windows';
     } else if (isMac) {
@@ -30,9 +30,11 @@ class OperatingSystemBrowser implements OperatingSystem {
     } else if (isAndroid) {
       platform = 'android';
     } else if (isIOS) {
-      platform = 'android';
+      platform = 'ios';
     } else if (isLinux) {
       platform = 'linux';
+    } else {
+      platform = 'unknown';
     }
     return platform;
   }
@@ -40,9 +42,9 @@ class OperatingSystemBrowser implements OperatingSystem {
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{};
     final platform = _platformText;
-    if (_platformText != null) {
-      map['platform'] = platform;
-    }
+
+    map['platform'] = platform;
+
     return map;
   }
 }

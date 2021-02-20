@@ -7,11 +7,11 @@ import 'package:tekartik_platform_browser/context_browser.dart';
 import 'package:tekartik_platform_test/platform_context_example.dart' as common;
 
 int line = 0;
-Element out;
+Element? out;
 
 void displayPrint(String text) {
-  out ??= document.body.querySelector('#out');
-  out.appendText('$text\n');
+  out ??= document.body!.querySelector('#out');
+  out!.appendText('$text\n');
 }
 
 void main() {
@@ -22,7 +22,7 @@ void run(PlatformContext context) {
   common.print = displayPrint;
   common.run(context);
 
-  document.body.querySelector('#context').text =
+  document.body!.querySelector('#context')!.text =
       const JsonEncoder.withIndent('  ').convert(context.toMap());
 
   display('navigator.platform', window.navigator.platform);
@@ -35,14 +35,14 @@ void run(PlatformContext context) {
   display('navigator.vendorSub', window.navigator.vendorSub);
   display('navigator.dartEnabled', window.navigator.dartEnabled.toString());
 
-  document.body.querySelector('#info').text =
+  document.body!.querySelector('#info')!.text =
       const JsonEncoder.withIndent('  ').convert(info);
 }
 
-Element list;
+Element? list;
 Map info = {};
 
-void display(String name, String value) {
+void display(String name, String? value) {
   info[name] = value;
 }
 

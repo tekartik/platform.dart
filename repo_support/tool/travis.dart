@@ -1,4 +1,5 @@
 import 'package:process_run/shell.dart';
+import 'package:path/path.dart';
 
 Future main() async {
   var shell = Shell();
@@ -11,7 +12,7 @@ Future main() async {
     'platform_test',
   ]) {
     print('package: $dir');
-    shell = shell.pushd(dir);
+    shell = shell.pushd(join('..', dir));
     await shell.run('''
     
     pub get

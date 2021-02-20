@@ -10,10 +10,10 @@ void main() {
     final context = platformContextBrowser;
 
     test('chrome', () {
-      expect(context.browser.isChrome, isTrue);
-      expect(context.browser.isChromeDartium, isFalse);
-      expect(context.browser.isChromeChromium, isFalse);
-      expect(context.browser.isDartVm, isFalse);
+      expect(context.browser!.isChrome, isTrue);
+      expect(context.browser!.isChromeDartium, isFalse);
+      expect(context.browser!.isChromeChromium, isFalse);
+      expect(context.browser!.isDartVm, isFalse);
     }, testOn: 'chrome');
 
     /*
@@ -26,22 +26,22 @@ void main() {
     */
 
     test('firefox', () {
-      expect(context.browser.isFirefox, isTrue);
-      expect(context.browser.isDartVm, isFalse);
+      expect(context.browser!.isFirefox, isTrue);
+      expect(context.browser!.isDartVm, isFalse);
     }, testOn: 'firefox');
 
     test('ie', () {
-      expect(context.browser.isIe, isTrue);
-      expect(context.browser.isDartVm, isFalse);
+      expect(context.browser!.isIe, isTrue);
+      expect(context.browser!.isDartVm, isFalse);
     }, testOn: 'ie');
 
     test('safari', () {
-      expect(context.browser.isSafari, isTrue);
-      expect(context.browser.isDartVm, isFalse);
+      expect(context.browser!.isSafari, isTrue);
+      expect(context.browser!.isDartVm, isFalse);
     }, testOn: 'safari');
 
     test('supportsTouch', () {
-      expect(context.browser.device.supportsTouch, isNotNull);
+      expect(context.browser!.device.supportsTouch, isNotNull);
     });
   });
 }

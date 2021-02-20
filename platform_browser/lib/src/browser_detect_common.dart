@@ -29,14 +29,14 @@ Version parseVersion(String text) {
   try {
     return Version.parse(text);
   } on FormatException catch (e, _) {
-    Match match = _completeVersion.firstMatch(text);
+    Match? match = _completeVersion.firstMatch(text);
     if (match != null) {
       try {
         //      print(match[0]);
         //      print(match[1]);
         //      print(match[2]);
-        final major = int.parse(match[1]);
-        final minor = int.parse(match[2]);
+        final major = int.parse(match[1]!);
+        final minor = int.parse(match[2]!);
 
         return Version(major, minor, 0);
       } on FormatException catch (_) {
@@ -49,9 +49,9 @@ Version parseVersion(String text) {
           //      print(match[0]);
           //      print(match[1]);
           //      print(match[2]);
-          final major = int.parse(match[1]);
-          final minor = int.parse(match[2]);
-          final patch = int.parse(match[3]);
+          final major = int.parse(match[1]!);
+          final minor = int.parse(match[2]!);
+          final patch = int.parse(match[3]!);
           final build = match[4];
 
           return Version(major, minor, patch, build: build);
@@ -68,9 +68,9 @@ Version parseVersion(String text) {
 class BrowserDetectCommon {
   // Handle stuff like 'Trident/7.0, Chrome/29.0...'
   bool _checkAndGetVersion(String name) {
-    final index = _userAgent.indexOf(name);
+    final index = _userAgent!.indexOf(name);
     if (index >= 0) {
-      var versionString = _userAgent.substring(index + name.length + 1);
+      var versionString = _userAgent!.substring(index + name.length + 1);
       var endVersion = versionString.indexOf(' ');
       if (endVersion >= 0) {
         versionString = versionString.substring(0, endVersion);
@@ -85,19 +85,20 @@ class BrowserDetectCommon {
     return false;
   }
 
-  Version _browserVersion;
-  bool _isFirefox;
-  bool _isSafari;
-  bool _isMobile;
-  bool _isChrome;
-  bool _isIe;
-  bool _isEdge;
+  Version? _browserVersion;
+  bool? _isFirefox;
+  bool? _isSafari;
+  bool? _isMobile;
+  bool? _isChrome;
+  bool? _isIe;
+  bool? _isEdge;
 
   // OS
-  bool _isWindows;
-  bool _isMac;
-  bool _isLinux;
+  bool? _isWindows;
+  bool? _isMac;
+  bool? _isLinux;
 
+  // Version 0 if not found
   Version get browserVersion => _browserVersion ??= () {
         // Check all platforms
         isIe;
@@ -107,7 +108,8 @@ class BrowserDetectCommon {
         isSafari;
         isFirefox;
         return _browserVersion;
-      }();
+      }() ??
+      Version.none;
 
   bool get isIe {
     if (_isIe == null) {
@@ -115,7 +117,7 @@ class BrowserDetectCommon {
       // Edge 12 and over
       _isIe = _checkAndGetVersion('Trident');
     }
-    return _isIe;
+    return _isIe!;
   }
 
   bool get isEdge {
@@ -124,7 +126,7 @@ class BrowserDetectCommon {
       // Edge 12 and over
       _isEdge = _checkAndGetVersion('Edge');
     }
-    return _isEdge;
+    return _isEdge!;
   }
 
   // to deprecate
@@ -136,7 +138,7 @@ class BrowserDetectCommon {
       // Can check vendor too...
       _isChrome = _checkAndGetVersion('Chrome');
     }
-    return _isChrome;
+    return _isChrome!;
   }
 
   bool get isChromeChromium {
@@ -144,7 +146,7 @@ class BrowserDetectCommon {
   }
 
   bool get isChromeDartium {
-    return isChrome && _userAgent.contains('(Dart)');
+    return isChrome && _userAgent!.contains('(Dart)');
   }
 
   bool get isFirefox {
@@ -152,33 +154,33 @@ class BrowserDetectCommon {
       init();
       _isFirefox = _checkAndGetVersion('Firefox');
     }
-    return _isFirefox;
+    return _isFirefox!;
   }
 
   bool get isSafari {
     if (_isSafari == null) {
       init();
-      _isSafari = !isChrome && _userAgent.contains('Safari');
-      if (_isSafari) {
+      _isSafari = !isChrome && _userAgent!.contains('Safari');
+      if (_isSafari!) {
         _checkAndGetVersion('Version');
       }
     }
-    return _isSafari;
+    return _isSafari!;
   }
 
   // on chrome
   // on ie:  For Windows environments, value Windows NT 6.3 stands for Win 8.1, Windows NT 6.2 for Win 8, Windows NT 6.1 for Win 7 and so on
-  bool get isWindows => _isWindows ??= _userAgent.contains('Windows');
+  bool get isWindows => _isWindows ??= _userAgent!.contains('Windows');
 
-  bool get isMac => _isMac ??= _userAgent.contains('Macintosh');
+  bool get isMac => _isMac ??= _userAgent!.contains('Macintosh');
 
-  bool get isLinux => _isLinux ??= _userAgent.contains('Linux');
+  bool get isLinux => _isLinux ??= _userAgent!.contains('Linux');
 
   // every browser can be mobile
   bool get isMobile => _isMobile ??= () {
-        return _userAgent.contains('Mobile/') ||
-            _userAgent.contains('Mobile ') ||
-            _userAgent.contains(' Mobile');
+        return _userAgent!.contains('Mobile/') ||
+            _userAgent!.contains('Mobile ') ||
+            _userAgent!.contains(' Mobile');
       }();
 
   bool get isMobileIOS {
@@ -186,7 +188,7 @@ class BrowserDetectCommon {
   }
 
   bool get _canBeIPhone {
-    return _userAgent.contains('iPhone');
+    return _userAgent!.contains('iPhone');
   }
 
   bool get isMobileIPhone {
@@ -198,7 +200,7 @@ class BrowserDetectCommon {
   }
 
   bool get _canBeIPad {
-    return _userAgent.contains('iPad');
+    return _userAgent!.contains('iPad');
   }
 
   bool get isMobileIPod {
@@ -206,18 +208,18 @@ class BrowserDetectCommon {
   }
 
   bool get _canBeIPod {
-    return _userAgent.contains('iPod');
+    return _userAgent!.contains('iPod');
   }
 
   bool get isMobileAndroid {
-    return isMobile && _userAgent.contains('Android');
+    return isMobile && _userAgent!.contains('Android');
   }
 
-  String _userAgent;
+  String? _userAgent;
 
-  String get userAgent => _userAgent;
+  String? get userAgent => _userAgent;
 
-  set userAgent(String userAgent) {
+  set userAgent(String? userAgent) {
     _userAgent = userAgent;
 
     // Navigator
