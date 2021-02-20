@@ -15,6 +15,7 @@ dart:
 
 script:
   - cd repo_support
+  - dart pub get
   - dart ./tool/travis.dart
 
 # Only building master means that we don't run two builds for each pull request.
