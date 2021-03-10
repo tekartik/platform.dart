@@ -8,7 +8,6 @@ Future main() async {
     'platform',
     'platform_browser',
     'platform_io',
-    'platform_node',
     'platform_test',
   ]) {
     print('package: $dir');

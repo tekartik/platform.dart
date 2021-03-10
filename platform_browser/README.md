@@ -10,6 +10,6 @@ dependencies:
     git:
       url: git://github.com/tekartik/platform.dart
       path: platform_browser
-      ref: dart2
+      ref: null_safety
     version: '>=0.2.1'
 ```
