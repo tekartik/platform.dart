@@ -5,36 +5,36 @@ import 'package:tekartik_platform_browser/src/browser/operating_system.dart';
 import 'browser_detect.dart';
 
 class _Device implements BrowserDevice {
-  BrowserDetect _detect;
+  BrowserDetect? _detect;
 
   _Device([this._detect]) {
     _detect ??= BrowserDetect();
   }
 
   @override
-  bool get isMobile => _detect.isMobile;
+  bool get isMobile => _detect!.isMobile;
 
   @override
-  bool get isIPad => _detect.isMobileIPad;
+  bool get isIPad => _detect!.isMobileIPad;
 
   @override
-  bool get isIPhone => _detect.isMobileIPhone;
+  bool get isIPhone => _detect!.isMobileIPhone;
 
   @override
-  bool get isIPod => _detect.isMobileIPod;
+  bool get isIPod => _detect!.isMobileIPod;
 
   @override
-  bool get supportsTouch => _detect.supportsTouch;
+  bool get supportsTouch => _detect!.supportsTouch;
 }
 
 class _Browser implements Browser {
   final _detect = BrowserDetect();
 
-  OperatingSystemBrowser _os;
-  BrowserDevice _device;
+  OperatingSystemBrowser? _os;
+  BrowserDevice? _device;
 
-  String get navigatorText {
-    String navigator;
+  String? get navigatorText {
+    String? navigator;
     if (isIe) {
       navigator = 'ie';
     } else if (isFirefox) {
@@ -104,10 +104,10 @@ class _Browser implements Browser {
 
 class _BrowserPlatformContext implements PlatformContext {
   @override
-  Io get io => null;
+  Io? get io => null;
 
   @override
-  Node get node => null;
+  Node? get node => null;
 
   // non null if in io
   @override
@@ -127,10 +127,10 @@ class _BrowserPlatformContext implements PlatformContext {
   }
 
   @override
-  Platform get platform => null;
+  Platform? get platform => null;
 }
 
-PlatformContext _browserPlatformContext;
+PlatformContext? _browserPlatformContext;
 
 PlatformContext get browserPlatformContext =>
     _browserPlatformContext ??= _BrowserPlatformContext();

@@ -10,8 +10,8 @@ void main() {
     //PlatformContext context = browserPlatformContext;
 
     test('browser', () {
-      print(platformContextBrowser.browser.isMobile);
-      print(platformContextBrowser.browser.device.supportsTouch);
+      print(platformContextBrowser.browser!.isMobile);
+      print(platformContextBrowser.browser!.device.supportsTouch);
     });
   });
 }

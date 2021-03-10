@@ -3,13 +3,13 @@ import 'package:test/test.dart';
 
 class PlatformContextFake implements PlatformContext {
   @override
-  Browser get browser => null;
+  Browser? get browser => null;
 
   @override
-  Io get io => null;
+  Io? get io => null;
 
   @override
-  Node get node => null;
+  Node? get node => null;
 
   @override
   Map<String, dynamic> toMap() {
@@ -17,7 +17,7 @@ class PlatformContextFake implements PlatformContext {
   }
 
   @override
-  Platform get platform => null;
+  Platform? get platform => null;
 }
 
 void main() {

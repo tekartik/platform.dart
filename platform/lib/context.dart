@@ -97,16 +97,16 @@ abstract class Platform {
 /// Common platform context
 abstract class PlatformContext {
   /// non null if in a browser
-  Browser get browser;
+  Browser? get browser;
 
   /// Non null for io & node
-  Platform get platform;
+  Platform? get platform;
 
   /// non null if in io
-  Io get io;
+  Io? get io;
 
   /// non null if in node
-  Node get node;
+  Node? get node;
 
   /// for debugging
   Map<String, dynamic> toMap();
