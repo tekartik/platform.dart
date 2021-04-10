@@ -2,7 +2,7 @@ import 'dart:core' hide print;
 
 import 'package:tekartik_platform/context.dart';
 
-late Function print;
+late void Function(Object? object) print;
 
 void run(PlatformContext context) {
   if (context.io != null) {

@@ -9,9 +9,9 @@ import 'package:tekartik_platform_test/platform_context_example.dart' as common;
 int line = 0;
 Element? out;
 
-void displayPrint(String text) {
+void displayPrint(Object? object) {
   out ??= document.body!.querySelector('#out');
-  out!.appendText('$text\n');
+  out!.appendText('$object\n');
 }
 
 void main() {
