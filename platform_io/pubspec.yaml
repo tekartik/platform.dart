@@ -10,9 +10,9 @@ dependencies:
   path: '>1.4.0'
   tekartik_platform:
     git:
-      url: git://github.com/tekartik/platform.dart
+      url: https://github.com/tekartik/platform.dart
       path: platform
-      ref: null_safety
+      ref: dart2_3
     version: '>=0.2.1'
   process_run: '>=0.10.0+1'
 
