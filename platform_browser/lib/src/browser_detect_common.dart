@@ -28,7 +28,7 @@ final _fourNumbersCompleteVersion =
 Version parseVersion(String text) {
   try {
     return Version.parse(text);
-  } on FormatException catch (e, _) {
+  } on FormatException catch (e) {
     Match? match = _completeVersion.firstMatch(text);
     if (match != null) {
       try {
