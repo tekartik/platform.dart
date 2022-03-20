@@ -17,7 +17,8 @@ dev_dependencies:
       ref: dart2_3
       path: packages/lints
     version: '>=0.1.0'
-
+  path:
+  process_run:
 _dev_dependencies:
   # test dependencies without version
   tekartik_platform_io:

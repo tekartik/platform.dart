@@ -83,14 +83,15 @@ class PlatformContextIoImpl implements PlatformContextIo {
 
   // non null if in io
   @override
-  final _Io io = _Io();
+  Io get io => _io;
 
+  final _io = _Io();
   @override
   String toString() => '[io] $io';
 
   @override
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{'io': io.toMap()};
+    final map = <String, dynamic>{'io': _io.toMap()};
     return map;
   }
 

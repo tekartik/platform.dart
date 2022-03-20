@@ -7,8 +7,8 @@ import 'browser_detect.dart';
 class _Device implements BrowserDevice {
   BrowserDetect? _detect;
 
-  _Device([this._detect]) {
-    _detect ??= BrowserDetect();
+  _Device([BrowserDetect? detect]) {
+    _detect = detect ?? BrowserDetect();
   }
 
   @override
