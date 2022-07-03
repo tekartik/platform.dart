@@ -11,7 +11,7 @@ void main() => defineTests();
 
 void defineTests() {
   group('browser_device', () {
-    void _checkSingle(Device device) {
+    void checkSingle(Device device) {
       if (device.isIPad) {
         expect(device.isIPod || device.isIPhone, isFalse);
       }
@@ -23,9 +23,9 @@ void defineTests() {
       }
     }
 
-    Device _fromUserAgent(String userAgent) {
+    Device fromUserAgent(String userAgent) {
       final device = Device(BrowserDetectCommon()..userAgent = userAgent);
-      _checkSingle(device);
+      checkSingle(device);
       return device;
     }
 
@@ -35,20 +35,20 @@ void defineTests() {
 
     test('safari', () {
       // OS X 10.10.5
-      var device = _fromUserAgent(
+      var device = fromUserAgent(
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/601.1.56 (KHTML, like Gecko) Version/9.0 Safari/601.1.56');
       expect(device.isMobile, isFalse);
     });
 
     test('iPad', () {
       // iPad2
-      var device = _fromUserAgent(iPad2SafariOS9);
+      var device = fromUserAgent(iPad2SafariOS9);
       expect(device.isIPad, isTrue);
     });
 
     test('iPhone', () {
       // iPad2
-      var device = _fromUserAgent(
+      var device = fromUserAgent(
           'Mozilla/5.0 (iPhone; CPU iPhone OS 9_0 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13A344 Safari/601.1');
       expect(device.isIPhone, isTrue);
     });

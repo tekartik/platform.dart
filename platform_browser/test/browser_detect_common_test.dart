@@ -2,7 +2,6 @@ library browser_detect_utils_common_test;
 
 import 'package:dev_test/test.dart';
 import 'package:pub_semver/pub_semver.dart';
-
 //import 'package:tekartik_utils/dev_utils.dart';
 import 'package:tekartik_platform_browser/src/browser_detect_common.dart';
 
@@ -12,7 +11,7 @@ void defineTests() {
   group('browser_detect', () {
     final browserDetect = BrowserDetectCommon();
 
-    void _checkSingle(BrowserDetectCommon browserDetect) {
+    void checkSingle(BrowserDetectCommon browserDetect) {
       if (browserDetect.isChrome) {
         expect(
             browserDetect.isIe ||
@@ -53,8 +52,8 @@ void defineTests() {
       }
     }
 
-    void _checkSingleBrowser() {
-      _checkSingle(browserDetect);
+    void checkSingleBrowser() {
+      checkSingle(browserDetect);
     }
 
     tearDown(() {
@@ -69,7 +68,7 @@ void defineTests() {
       expect(browserDetect.isSafari, isTrue);
       expect(browserDetect.browserVersion, Version(9, 0, 0));
       expect(browserDetect.isMobile, isFalse);
-      _checkSingleBrowser();
+      checkSingleBrowser();
     });
 
     test('ie', () {
@@ -80,7 +79,7 @@ void defineTests() {
       expect(browserDetect.isEdge, isFalse);
       expect(browserDetect.browserVersion, Version(7, 0, 0));
       expect(browserDetect.isMobile, isFalse);
-      _checkSingleBrowser();
+      checkSingleBrowser();
     });
 
     test('edge', () {
@@ -90,7 +89,7 @@ void defineTests() {
       expect(browserDetect.isIe, isFalse);
       expect(browserDetect.browserVersion, Version(12, 0, 0));
       expect(browserDetect.isMobile, isFalse);
-      _checkSingleBrowser();
+      checkSingleBrowser();
     });
 
     test('firefox', () {
@@ -99,40 +98,40 @@ void defineTests() {
       expect(browserDetect.isFirefox, isTrue);
       expect(browserDetect.browserVersion, Version(29, 0, 0));
       expect(browserDetect.isMobile, isFalse);
-      _checkSingleBrowser();
+      checkSingleBrowser();
     });
 
-    BrowserDetectCommon _fromUserAgent(String userAgent) {
+    BrowserDetectCommon fromUserAgent(String userAgent) {
       final detect = BrowserDetectCommon()..userAgent = userAgent;
       return detect;
     }
 
     test('windows', () {
       // Windows 10 on Chrome (yoga 2 13)
-      var detect = _fromUserAgent(
+      var detect = fromUserAgent(
           'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.0 (Dart) Safari/537.36');
       expect(detect.isWindows, isTrue);
-      _checkSingle(detect);
+      checkSingle(detect);
 
       // Windows 10 on firefox
-      detect = _fromUserAgent(
+      detect = fromUserAgent(
           'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0');
       expect(detect.isWindows, isTrue);
-      _checkSingle(detect);
+      checkSingle(detect);
     });
 
     test('mac', () {
-      var detect = _fromUserAgent(
+      var detect = fromUserAgent(
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36');
       expect(detect.isMac, isTrue);
-      _checkSingle(detect);
+      checkSingle(detect);
     });
 
     test('linux', () {
-      var detect = _fromUserAgent(
+      var detect = fromUserAgent(
           'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/45.0.2454.101 Chrome/45.0.2454.101 Safari/537.36');
       expect(detect.isLinux, isTrue);
-      _checkSingle(detect);
+      checkSingle(detect);
     });
 
     test('chrome', () {
@@ -145,7 +144,7 @@ void defineTests() {
       expect(browserDetect.isMobile, isFalse);
       expect(browserDetect.browserVersion, Version(46, 0, 2490, build: '86'));
 
-      _checkSingleBrowser();
+      checkSingleBrowser();
 
       browserDetect.userAgent =
           'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36';
@@ -155,7 +154,7 @@ void defineTests() {
       expect(browserDetect.isMobile, isFalse);
       expect(browserDetect.browserVersion, Version(36, 0, 1985, build: '125'));
 
-      _checkSingleBrowser();
+      checkSingleBrowser();
     });
 
     test('chromium', () {
@@ -166,7 +165,7 @@ void defineTests() {
       expect(browserDetect.isChrome, isTrue);
       expect(browserDetect.isMobile, isFalse);
       expect(browserDetect.browserVersion, Version(45, 0, 2454, build: '101'));
-      _checkSingleBrowser();
+      checkSingleBrowser();
     });
     test('chrome_dartium', () {
       browserDetect.userAgent =
@@ -176,7 +175,7 @@ void defineTests() {
       expect(browserDetect.isChrome, isTrue);
       expect(browserDetect.isMobile, isFalse);
       expect(browserDetect.browserVersion, Version(37, 0, 2062, build: '0'));
-      _checkSingleBrowser();
+      checkSingleBrowser();
     });
 
     test('iPad', () {
@@ -203,7 +202,7 @@ void defineTests() {
       expect(browserDetect.browserVersion, Version(9, 0, 0));
       expect(browserDetect.isMobileAndroid, isFalse);
       expect(browserDetect.isSafari, isTrue);
-      _checkSingleBrowser();
+      checkSingleBrowser();
 
       // Chrome iOS
       browserDetect.userAgent =
@@ -211,7 +210,7 @@ void defineTests() {
       expect(browserDetect.isMobileIOS, isTrue);
       expect(browserDetect.isMobileAndroid, isFalse);
       expect(browserDetect.isSafari, isTrue);
-      _checkSingleBrowser();
+      checkSingleBrowser();
 
       // Chrome Android 6
       browserDetect.userAgent =
@@ -221,7 +220,7 @@ void defineTests() {
       expect(browserDetect.isMobileIOS, isFalse);
       expect(browserDetect.isMobileAndroid, isTrue);
       expect(browserDetect.browserVersion, Version(46, 0, 2490, build: '76'));
-      _checkSingleBrowser();
+      checkSingleBrowser();
     });
   });
 }
