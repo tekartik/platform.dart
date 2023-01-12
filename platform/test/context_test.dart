@@ -23,7 +23,7 @@ class PlatformContextFake implements PlatformContext {
 void main() {
   group('context', () {
     test('info', () {
-      expect(PlatformContextFake().toMap(), {});
+      expect(PlatformContextFake().toMap(), isEmpty);
     });
   });
 }
