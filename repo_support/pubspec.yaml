@@ -6,7 +6,7 @@ publish_to: none
 #author: alex <email@example.com>
 
 environment:
-  sdk: '>=2.18.0 <4.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 dev_dependencies:
   test: ">=1.2.0"
@@ -14,7 +14,7 @@ dev_dependencies:
   tekartik_lints:
     git:
       url: https://github.com/tekartik/common.dart
-      ref: dart2_3
+      ref: dart3a
       path: packages/lints
     version: '>=0.1.0'
   path:
@@ -24,20 +24,20 @@ _dev_dependencies:
   tekartik_platform_io:
     git:
       url: https://github.com/tekartik/platform.dart
-      ref: dart2_3
+      ref: dart3a
       path: platform_io
   tekartik_platform_browser:
     git:
       url: https://github.com/tekartik/platform.dart
-      ref: dart2_3
+      ref: dart3a
       path: platform_browser
   tekartik_platform_node:
     git:
       url: https://github.com/tekartik/platform.dart
-      ref: dart2_3
+      ref: dart3a
       path: platform_node
   tekartik_platform:
     git:
       url: https://github.com/tekartik/platform.dart
-      ref: dart2_3
+      ref: dart3a
       path: platform
