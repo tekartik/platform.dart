@@ -45,10 +45,6 @@ void main() {
       expect(isFirefox, isTrue);
     }, testOn: 'firefox');
 
-    test('ie', () {
-      expect(isIe, isTrue);
-    }, testOn: 'ie');
-
     test('safari', () {
       expect(isSafari, isTrue);
     }, testOn: 'safari');

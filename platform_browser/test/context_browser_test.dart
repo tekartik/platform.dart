@@ -30,11 +30,6 @@ void main() {
       expect(context.browser!.isDartVm, isFalse);
     }, testOn: 'firefox');
 
-    test('ie', () {
-      expect(context.browser!.isIe, isTrue);
-      expect(context.browser!.isDartVm, isFalse);
-    }, testOn: 'ie');
-
     test('safari', () {
       expect(context.browser!.isSafari, isTrue);
       expect(context.browser!.isDartVm, isFalse);
