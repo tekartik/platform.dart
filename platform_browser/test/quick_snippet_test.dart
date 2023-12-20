@@ -1,7 +1,7 @@
 library platform_context.test.quick_snippet.dart;
 
-import 'package:dev_test/test.dart';
 import 'package:tekartik_platform_browser/src/browser_detect_common.dart';
+import 'package:test/test.dart';
 
 //
 // Dart vs Javascript detection

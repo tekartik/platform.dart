@@ -1,8 +1,8 @@
 library browser_detect_utils_common_test;
 
-import 'package:dev_test/test.dart';
 import 'package:tekartik_platform_browser/src/browser/device.dart';
 import 'package:tekartik_platform_browser/src/browser_detect_common.dart';
+import 'package:test/test.dart';
 
 import 'user_agents.dart';
 //import 'package:tekartik_utils/dev_utils.dart';

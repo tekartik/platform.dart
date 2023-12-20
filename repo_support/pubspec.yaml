@@ -10,7 +10,7 @@ environment:
 
 dev_dependencies:
   test: ">=1.2.0"
-  dev_test: '>=0.13.0'
+  dev_build: '>=0.13.0'
   tekartik_lints:
     git:
       url: https://github.com/tekartik/common.dart
