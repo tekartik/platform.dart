@@ -31,6 +31,9 @@ abstract class Browser {
 
   BrowserDevice get device;
 
+  /// True for new edge browser.
+  bool get isChromeEdge;
+
   bool get isIe;
 
   bool get isFirefox;

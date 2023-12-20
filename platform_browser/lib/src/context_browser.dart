@@ -44,6 +44,8 @@ class _Browser implements Browser {
         navigator = 'dartium';
       } else if (isChromeChromium) {
         navigator = 'chromium';
+      } else if (isChromeEdge) {
+        navigator = 'edge';
       } else {
         navigator = 'chrome';
       }
@@ -69,6 +71,9 @@ class _Browser implements Browser {
     }
     return map;
   }
+
+  @override
+  bool get isChromeEdge => _detect.isChromeEdge;
 
   @override
   bool get isIe => _detect.isIe;

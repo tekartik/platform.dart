@@ -92,6 +92,18 @@ void defineTests() {
       checkSingleBrowser();
     });
 
+    test('chrome edge', () {
+      browserDetect.userAgent =
+          'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0';
+      expect(browserDetect.isEdge, isFalse);
+      expect(browserDetect.isChrome, isTrue);
+      expect(browserDetect.isChromeEdge, isTrue);
+      expect(browserDetect.isIe, isFalse);
+      expect(browserDetect.browserVersion, Version(120, 0, 0, build: '0'));
+      expect(browserDetect.isMobile, isFalse);
+      checkSingleBrowser();
+    });
+
     test('firefox', () {
       browserDetect.userAgent =
           'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0';

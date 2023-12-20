@@ -24,7 +24,13 @@ void run(PlatformContext context) {
   }
   if (context.browser != null) {
     if (context.browser!.isChrome) {
-      print('We are on Chrome');
+      if (context.browser!.isChromeEdge) {
+        print('We are on Chrome Edge');
+      } else if (context.browser!.isChromeChromium) {
+        print('We are on Chromium');
+      } else {
+        print('We are on Chrome');
+      }
     } else if (context.browser!.isSafari) {
       print('We are on Safari');
     } else if (context.browser!.isFirefox) {

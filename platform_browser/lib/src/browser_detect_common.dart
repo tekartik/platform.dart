@@ -68,7 +68,7 @@ Version parseVersion(String text) {
 class BrowserDetectCommon {
   // Handle stuff like 'Trident/7.0, Chrome/29.0...'
   bool _checkAndGetVersion(String name) {
-    final index = _userAgent!.indexOf(name);
+    final index = _userAgent!.indexOf('$name/');
     if (index >= 0) {
       var versionString = _userAgent!.substring(index + name.length + 1);
       var endVersion = versionString.indexOf(' ');
@@ -92,6 +92,7 @@ class BrowserDetectCommon {
   bool? _isChrome;
   bool? _isIe;
   bool? _isEdge;
+  bool? _isChromeEdge;
 
   // OS
   bool? _isWindows;
@@ -107,6 +108,7 @@ class BrowserDetectCommon {
         isChromeChromium;
         isSafari;
         isFirefox;
+        isChromeEdge;
         return _browserVersion;
       }() ??
       Version.none;
@@ -127,6 +129,16 @@ class BrowserDetectCommon {
       _isEdge = _checkAndGetVersion('Edge');
     }
     return _isEdge!;
+  }
+
+  /// Chrome edge is also Chrome !
+  bool get isChromeEdge {
+    if (_isChromeEdge == null) {
+      init();
+      // Edge 120 and over
+      _isChromeEdge = _checkAndGetVersion('Edg');
+    }
+    return _isChromeEdge!;
   }
 
   // to deprecate
