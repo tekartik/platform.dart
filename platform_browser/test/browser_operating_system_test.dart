@@ -1,10 +1,10 @@
 library browser_detect_utils_common_test;
 
-//import 'package:tekartik_utils/dev_utils.dart';
-import 'package:dev_test/test.dart';
 import 'package:tekartik_platform/context.dart';
 import 'package:tekartik_platform_browser/src/browser/operating_system.dart';
 import 'package:tekartik_platform_browser/src/browser_detect_common.dart';
+//import 'package:tekartik_utils/dev_utils.dart';
+import 'package:test/test.dart';
 
 void main() => defineTests();
 

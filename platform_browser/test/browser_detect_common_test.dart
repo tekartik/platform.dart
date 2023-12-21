@@ -1,9 +1,9 @@
 library browser_detect_utils_common_test;
 
-import 'package:dev_test/test.dart';
 import 'package:pub_semver/pub_semver.dart';
 //import 'package:tekartik_utils/dev_utils.dart';
 import 'package:tekartik_platform_browser/src/browser_detect_common.dart';
+import 'package:test/test.dart';
 
 void main() => defineTests();
 
@@ -88,6 +88,18 @@ void defineTests() {
       expect(browserDetect.isEdge, isTrue);
       expect(browserDetect.isIe, isFalse);
       expect(browserDetect.browserVersion, Version(12, 0, 0));
+      expect(browserDetect.isMobile, isFalse);
+      checkSingleBrowser();
+    });
+
+    test('chrome edge', () {
+      browserDetect.userAgent =
+          'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0';
+      expect(browserDetect.isEdge, isFalse);
+      expect(browserDetect.isChrome, isTrue);
+      expect(browserDetect.isChromeEdge, isTrue);
+      expect(browserDetect.isIe, isFalse);
+      expect(browserDetect.browserVersion, Version(120, 0, 0, build: '0'));
       expect(browserDetect.isMobile, isFalse);
       checkSingleBrowser();
     });

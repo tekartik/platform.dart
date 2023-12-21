@@ -1,9 +1,9 @@
 @TestOn('browser')
 library string_enum_test;
 
-//import 'package:tekartik_utils/dev_utils.dart';
-import 'package:dev_test/test.dart';
 import 'package:tekartik_platform_browser/context_browser.dart';
+//import 'package:tekartik_utils/dev_utils.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('context', () {
@@ -29,11 +29,6 @@ void main() {
       expect(context.browser!.isFirefox, isTrue);
       expect(context.browser!.isDartVm, isFalse);
     }, testOn: 'firefox');
-
-    test('ie', () {
-      expect(context.browser!.isIe, isTrue);
-      expect(context.browser!.isDartVm, isFalse);
-    }, testOn: 'ie');
 
     test('safari', () {
       expect(context.browser!.isSafari, isTrue);
