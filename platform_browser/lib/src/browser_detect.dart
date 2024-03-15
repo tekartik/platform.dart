@@ -1,13 +1,17 @@
 library tekartik_platform_context.src.browser_detect;
 
-import 'dart:html';
+import 'package:web/web.dart';
 import 'browser_detect_common.dart';
 export 'browser_detect_common.dart';
 
 class BrowserDetect extends BrowserDetectCommon {
-  bool get supportsTouch => window.navigator.maxTouchPoints != null
-      ? window.navigator.maxTouchPoints! > 0
-      : TouchEvent.supported;
+  bool get supportsTouch {
+    try {
+      return window.navigator.maxTouchPoints > 0;
+    } catch (e) {
+      return false;
+    }
+  }
 
   @override
   void init() {
