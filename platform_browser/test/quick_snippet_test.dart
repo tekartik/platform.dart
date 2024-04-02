@@ -85,6 +85,7 @@ void main() {
 
   test('vm', () {
     expect(isJavascriptVm, isRunningAsJavascript);
+    expect(isJavascriptVm, kDartIsWeb);
     expect(isDartVm, !isRunningAsJavascript);
   });
 }

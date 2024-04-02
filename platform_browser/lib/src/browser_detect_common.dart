@@ -3,8 +3,9 @@ library tekartik_platform_context.src.browser_detect_common;
 
 import 'package:pub_semver/pub_semver.dart';
 
-// Current way to detect javascript
-bool get isRunningAsJavascript => identical(1.0, 1);
+// ignore: depend_on_referenced_packages
+export 'package:tekartik_common_utils/env_utils.dart'
+    show isRunningAsJavascript, kDartIsWeb;
 
 /// Regex that matches a version number at the beginning of a string.
 final _startVersion = RegExp(r'^' // Start at beginning.

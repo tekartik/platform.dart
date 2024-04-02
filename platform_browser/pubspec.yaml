@@ -1,5 +1,5 @@
 name: tekartik_platform_browser
-version: 0.4.0
+version: 0.5.0
 description: Get the global platform context
 publish_to: none
 
@@ -7,15 +7,15 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  pub_semver: any
-  collection: any
+  pub_semver:
+  collection:
   tekartik_platform:
     git:
       url: https://github.com/tekartik/platform.dart
       path: platform
       ref: dart3a
     version: '>=0.2.2'
-
+  web: '>=0.5.0'
 dev_dependencies:
   test: ">=1.2.0"
   dev_build: any
