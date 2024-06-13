@@ -1,10 +1,11 @@
 @TestOn('vm')
-library tekartik_platform_io.context_io_test;
+library;
 
 import 'dart:io';
 
 import 'package:path/path.dart';
 import 'package:tekartik_platform_io/context_io.dart';
+
 import 'package:test/test.dart';
 
 void main() {
@@ -23,6 +24,9 @@ void main() {
       } else if (Platform.isAndroid) {
         expect(platformContextIo.io!.isAndroid, isTrue);
       }
+    });
+    test('env', () {
+      expect(platformIo.environment, isNotEmpty);
     });
     test('path', () {
       print('userHomePath: ${platformContextIo.userHomePath}');

@@ -1,6 +1,6 @@
 import 'package:tekartik_platform/context.dart';
 
-export 'src/export/export.dart' show platformContextIo;
+export 'src/export/export.dart' show platformContextIo, platformIo;
 
 abstract class PlatformContextIo extends PlatformContext {
   /// Get user home path (HOME or USERPROFILE)
