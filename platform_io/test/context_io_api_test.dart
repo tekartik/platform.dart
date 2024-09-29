@@ -1,5 +1,5 @@
 @TestOn('vm || browser || node')
-library tekartik_platform_io.test.platform_io_api_test;
+library;
 
 // ignore: depend_on_referenced_packages
 import 'package:tekartik_common_utils/env_utils.dart';

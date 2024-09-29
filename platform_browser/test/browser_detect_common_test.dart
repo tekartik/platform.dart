@@ -1,4 +1,4 @@
-library browser_detect_utils_common_test;
+library;
 
 import 'package:pub_semver/pub_semver.dart';
 //import 'package:tekartik_utils/dev_utils.dart';

@@ -1,4 +1,4 @@
-library tekartik_platform_context.context;
+library;
 
 import 'package:pub_semver/pub_semver.dart';
 

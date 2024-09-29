@@ -1,5 +1,5 @@
 // exported for testing only
-library tekartik_platform_context.src.browser_detect_common;
+library;
 
 import 'package:pub_semver/pub_semver.dart';
 
