@@ -1,4 +1,4 @@
-library platform_context.test.quick_snippet.dart;
+library;
 
 import 'package:tekartik_platform_browser/src/browser_detect_common.dart';
 import 'package:test/test.dart';

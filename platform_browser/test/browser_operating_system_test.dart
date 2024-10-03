@@ -1,4 +1,4 @@
-library browser_detect_utils_common_test;
+library;
 
 import 'package:tekartik_platform/context.dart';
 import 'package:tekartik_platform_browser/src/browser/operating_system.dart';

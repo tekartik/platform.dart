@@ -1,4 +1,4 @@
-library tekartik_platform_context.src.browser_detect;
+library;
 
 import 'package:web/web.dart';
 import 'browser_detect_common.dart';

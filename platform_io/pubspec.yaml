@@ -23,6 +23,10 @@ dev_dependencies:
     path: ../platform_test
   build_runner: any
   build_test: any
+  tekartik_common_utils:
+    git:
+      url: https://github.com/tekartik/common_utils.dart
+      ref: dart3a
 dependency_overrides:
   tekartik_platform:
     path: ../platform

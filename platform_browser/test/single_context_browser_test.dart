@@ -1,5 +1,5 @@
 @TestOn('browser')
-library string_enum_test;
+library;
 
 import 'package:tekartik_platform_browser/context_browser.dart';
 //import 'package:tekartik_utils/dev_utils.dart';
