@@ -4,29 +4,27 @@ version: 0.4.0
 publish_to: none
 
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.6.0
 
 dependencies:
-  path: '>1.4.0'
+  path: ">=1.9.0"
   tekartik_platform:
     git:
       url: https://github.com/tekartik/platform.dart
       path: platform
       ref: dart3a
     version: '>=0.2.1'
-  process_run: '>=0.10.0+1'
+  process_run: ">=1.2.1+1"
 
 dev_dependencies:
-  test: ">=1.2.0"
-  dev_build: any
+  test: ">=1.24.0"
+  dev_build: ">=1.1.0+2"
   tekartik_platform_test:
     path: ../platform_test
-  build_runner: any
+  build_runner: ">=2.4.13"
   build_test: any
   tekartik_common_utils:
     git:
       url: https://github.com/tekartik/common_utils.dart
       ref: dart3a
-dependency_overrides:
-  tekartik_platform:
-    path: ../platform
+resolution: workspace
