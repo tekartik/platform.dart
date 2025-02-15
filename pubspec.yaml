@@ -1,0 +1,10 @@
+name: _
+publish_to: none
+environment:
+  sdk: ^3.6.0
+workspace:
+  - platform
+  - platform_browser
+  - platform_io
+  - platform_test
+  - repo_support
