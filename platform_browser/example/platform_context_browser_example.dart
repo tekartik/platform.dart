@@ -22,7 +22,7 @@ void run(PlatformContext context) {
   common.print = displayPrint;
   common.run(context);
 
-  document.body!.querySelector('#context')!.text =
+  document.body!.querySelector('#context')!.textContent =
       const JsonEncoder.withIndent('  ').convert(context.toMap());
 
   display('navigator.platform', window.navigator.platform);
@@ -35,7 +35,7 @@ void run(PlatformContext context) {
   display('navigator.vendorSub', window.navigator.vendorSub);
   //display('navigator.dartEnabled', window.navigator.dartEnabled.toString());
 
-  document.body!.querySelector('#info')!.text =
+  document.body!.querySelector('#info')!.textContent =
       const JsonEncoder.withIndent('  ').convert(info);
 }
 
