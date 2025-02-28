@@ -9,6 +9,7 @@ void main() {
 }
 
 void run(PlatformContext context) {
+  // ignore: avoid_print
   print(const JsonEncoder.withIndent('  ').convert(context.toMap()));
 
   common.print = print;
