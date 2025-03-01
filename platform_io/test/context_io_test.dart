@@ -1,9 +1,9 @@
-@TestOn('vm')
 library;
 
 import 'dart:io';
 
 import 'package:path/path.dart';
+import 'package:tekartik_common_utils/env_utils.dart';
 import 'package:tekartik_platform_io/context_io.dart';
 
 import 'package:test/test.dart';
@@ -29,7 +29,9 @@ void main() {
       expect(platformIo.environment, isNotEmpty);
     });
     test('path', () {
+      // ignore: avoid_print
       print('userHomePath: ${platformContextIo.userHomePath}');
+      // ignore: avoid_print
       print('userAppDataPath: ${platformContextIo.userAppDataPath}');
       if (Platform.isWindows) {
         expect(
@@ -46,5 +48,5 @@ void main() {
       }
       //print(Platform.environment);
     });
-  });
+  }, skip: kDartIsWeb);
 }

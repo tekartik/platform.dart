@@ -74,6 +74,7 @@ class _Io with PlatformMixin implements Io {
   Map<String, String> get environment => io.Platform.environment;
 }
 
+/// Platform context for io
 class PlatformContextIoImpl implements PlatformContextIo {
   @override
   Browser? get browser => null;
@@ -107,5 +108,6 @@ class PlatformContextIoImpl implements PlatformContextIo {
 
 PlatformContextIoImpl? _platformContextIo;
 
-PlatformContextIo get platformContextIo =>
+/// IO platform content, never null
+PlatformContextIo get platformContextIoSingleton =>
     _platformContextIo ??= PlatformContextIoImpl();
