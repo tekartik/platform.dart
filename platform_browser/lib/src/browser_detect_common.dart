@@ -8,22 +8,26 @@ export 'package:tekartik_common_utils/env_utils.dart'
     show isRunningAsJavascript, kDartIsWeb;
 
 /// Regex that matches a version number at the beginning of a string.
-final _startVersion = RegExp(r'^' // Start at beginning.
-    r'(\d+).((\d+))?' // Version number.
-    );
+final _startVersion = RegExp(
+  r'^' // Start at beginning.
+  r'(\d+).((\d+))?', // Version number.
+);
 
 /// Like [_startVersion] but matches the entire string.
 final _completeVersion = RegExp('${_startVersion.pattern}\$');
 
 // Handle String with 4 numbers
 /// Regex that matches a version number at the beginning of a string.
-final _fourNumbersStartVersion = RegExp(r'^' // Start at beginning.
-        r'(\d+).(\d+).(\d+).([0-9A-Za-z-]*)') // Version number.
-    ;
+final _fourNumbersStartVersion = RegExp(
+  r'^' // Start at beginning.
+  r'(\d+).(\d+).(\d+).([0-9A-Za-z-]*)',
+) // Version number.
+;
 
 /// Like [_startVersion] but matches the entire string.
-final _fourNumbersCompleteVersion =
-    RegExp('${_fourNumbersStartVersion.pattern}\$');
+final _fourNumbersCompleteVersion = RegExp(
+  '${_fourNumbersStartVersion.pattern}\$',
+);
 
 /// Add support for version X, X.X not supported in platform version
 Version parseVersion(String text) {
@@ -101,18 +105,20 @@ class BrowserDetectCommon {
   bool? _isLinux;
 
   // Version 0 if not found
-  Version get browserVersion => _browserVersion ??= () {
-        // Check all platforms
-        isIe;
-        isEdge;
-        isChrome;
-        isChromeChromium;
-        isSafari;
-        isFirefox;
-        isChromeEdge;
-        return _browserVersion;
-      }() ??
-      Version.none;
+  Version get browserVersion =>
+      _browserVersion ??=
+          () {
+            // Check all platforms
+            isIe;
+            isEdge;
+            isChrome;
+            isChromeChromium;
+            isSafari;
+            isFirefox;
+            isChromeEdge;
+            return _browserVersion;
+          }() ??
+          Version.none;
 
   bool get isIe {
     if (_isIe == null) {
@@ -190,7 +196,8 @@ class BrowserDetectCommon {
   bool get isLinux => _isLinux ??= _userAgent!.contains('Linux');
 
   // every browser can be mobile
-  bool get isMobile => _isMobile ??= () {
+  bool get isMobile =>
+      _isMobile ??= () {
         return _userAgent!.contains('Mobile/') ||
             _userAgent!.contains('Mobile ') ||
             _userAgent!.contains(' Mobile');

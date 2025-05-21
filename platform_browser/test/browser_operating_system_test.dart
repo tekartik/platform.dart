@@ -13,40 +13,45 @@ void defineTests() {
     void checkSingle(OperatingSystem operatingSystem) {
       if (operatingSystem.isAndroid) {
         expect(
-            operatingSystem.isIOS ||
-                operatingSystem.isMac ||
-                operatingSystem.isWindows,
-            isFalse);
+          operatingSystem.isIOS ||
+              operatingSystem.isMac ||
+              operatingSystem.isWindows,
+          isFalse,
+        );
         expect(operatingSystem.isLinux, isTrue);
       }
       if (operatingSystem.isIOS) {
         expect(
-            operatingSystem.isAndroid ||
-                operatingSystem.isMac ||
-                operatingSystem.isLinux ||
-                operatingSystem.isWindows,
-            isFalse);
+          operatingSystem.isAndroid ||
+              operatingSystem.isMac ||
+              operatingSystem.isLinux ||
+              operatingSystem.isWindows,
+          isFalse,
+        );
       }
       if (operatingSystem.isLinux) {
         expect(
-            operatingSystem.isMac ||
-                operatingSystem.isIOS ||
-                operatingSystem.isWindows,
-            isFalse);
+          operatingSystem.isMac ||
+              operatingSystem.isIOS ||
+              operatingSystem.isWindows,
+          isFalse,
+        );
       }
       if (operatingSystem.isWindows) {
         expect(
-            operatingSystem.isIOS ||
-                operatingSystem.isMac ||
-                operatingSystem.isAndroid ||
-                operatingSystem.isLinux,
-            isFalse);
+          operatingSystem.isIOS ||
+              operatingSystem.isMac ||
+              operatingSystem.isAndroid ||
+              operatingSystem.isLinux,
+          isFalse,
+        );
       }
     }
 
     OperatingSystem fromUserAgent(String userAgent) {
-      OperatingSystem os =
-          OperatingSystemBrowser(BrowserDetectCommon()..userAgent = userAgent);
+      OperatingSystem os = OperatingSystemBrowser(
+        BrowserDetectCommon()..userAgent = userAgent,
+      );
       checkSingle(os);
       return os;
     }
@@ -58,14 +63,16 @@ void defineTests() {
     test('safari', () {
       // OS X 10.10.5
       var os = fromUserAgent(
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/601.1.56 (KHTML, like Gecko) Version/9.0 Safari/601.1.56');
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/601.1.56 (KHTML, like Gecko) Version/9.0 Safari/601.1.56',
+      );
       expect(os.isMac, isTrue);
     });
 
     test('iPad', () {
       // iPad2
       var os = fromUserAgent(
-          'Mozilla/5.0 (iPad; CPU OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B176 Safari/7534.48.3');
+        'Mozilla/5.0 (iPad; CPU OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B176 Safari/7534.48.3',
+      );
       expect(os.isIOS, isTrue);
     });
 
