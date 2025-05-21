@@ -35,15 +35,19 @@ void main() {
       print('userAppDataPath: ${platformContextIo.userAppDataPath}');
       if (Platform.isWindows) {
         expect(
-            platformContextIo.userAppDataPath, Platform.environment['APPDATA']);
+          platformContextIo.userAppDataPath,
+          Platform.environment['APPDATA'],
+        );
         // HOME is not set on github actions on Windows
         expect(
-            platformContextIo.userHomePath,
-            Platform.environment['HOME'] ??
-                Platform.environment['USERPROFILE']);
+          platformContextIo.userHomePath,
+          Platform.environment['HOME'] ?? Platform.environment['USERPROFILE'],
+        );
       } else {
-        expect(platformContextIo.userAppDataPath,
-            join(Platform.environment['HOME']!, '.config'));
+        expect(
+          platformContextIo.userAppDataPath,
+          join(Platform.environment['HOME']!, '.config'),
+        );
         expect(platformContextIo.userHomePath, Platform.environment['HOME']);
       }
       //print(Platform.environment);

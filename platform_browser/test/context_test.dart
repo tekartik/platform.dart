@@ -14,31 +14,35 @@ void defineTests() {
     void checkSingle(BrowserDetectCommon browserDetect) {
       if (browserDetect.isChrome) {
         expect(
-            browserDetect.isIe ||
-                browserDetect.isFirefox ||
-                browserDetect.isSafari,
-            isFalse);
+          browserDetect.isIe ||
+              browserDetect.isFirefox ||
+              browserDetect.isSafari,
+          isFalse,
+        );
       }
       if (browserDetect.isSafari) {
         expect(
-            browserDetect.isIe ||
-                browserDetect.isFirefox ||
-                browserDetect.isChrome,
-            isFalse);
+          browserDetect.isIe ||
+              browserDetect.isFirefox ||
+              browserDetect.isChrome,
+          isFalse,
+        );
       }
       if (browserDetect.isIe) {
         expect(
-            browserDetect.isSafari ||
-                browserDetect.isFirefox ||
-                browserDetect.isChrome,
-            isFalse);
+          browserDetect.isSafari ||
+              browserDetect.isFirefox ||
+              browserDetect.isChrome,
+          isFalse,
+        );
       }
       if (browserDetect.isFirefox) {
         expect(
-            browserDetect.isIe ||
-                browserDetect.isSafari ||
-                browserDetect.isChrome,
-            isFalse);
+          browserDetect.isIe ||
+              browserDetect.isSafari ||
+              browserDetect.isChrome,
+          isFalse,
+        );
       }
 
       if (browserDetect.isMac) {
@@ -107,27 +111,31 @@ void defineTests() {
     test('windows', () {
       // Windows 10 on Chrome (yoga 2 13)
       var detect = fromUserAgent(
-          'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.0 (Dart) Safari/537.36');
+        'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.0 (Dart) Safari/537.36',
+      );
       expect(detect.isWindows, isTrue);
       checkSingle(detect);
 
       // Windows 10 on firefox
       detect = fromUserAgent(
-          'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0');
+        'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0',
+      );
       expect(detect.isWindows, isTrue);
       checkSingle(detect);
     });
 
     test('mac', () {
       var detect = fromUserAgent(
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36');
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36',
+      );
       expect(detect.isMac, isTrue);
       checkSingle(detect);
     });
 
     test('linux', () {
       var detect = fromUserAgent(
-          'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/45.0.2454.101 Chrome/45.0.2454.101 Safari/537.36');
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/45.0.2454.101 Chrome/45.0.2454.101 Safari/537.36',
+      );
       expect(detect.isLinux, isTrue);
       checkSingle(detect);
     });

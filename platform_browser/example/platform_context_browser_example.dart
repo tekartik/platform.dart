@@ -35,8 +35,9 @@ void run(PlatformContext context) {
   display('navigator.vendorSub', window.navigator.vendorSub);
   //display('navigator.dartEnabled', window.navigator.dartEnabled.toString());
 
-  document.body!.querySelector('#info')!.textContent =
-      const JsonEncoder.withIndent('  ').convert(info);
+  document.body!
+      .querySelector('#info')!
+      .textContent = const JsonEncoder.withIndent('  ').convert(info);
 }
 
 Element? list;

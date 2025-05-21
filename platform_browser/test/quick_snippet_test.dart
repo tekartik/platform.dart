@@ -72,13 +72,22 @@ void main() {
       for (final userAgent in userAgents) {
         final detect = BrowserDetectCommon()..userAgent = userAgent;
         expect(isUserAgentIe(userAgent), detect.isIe, reason: userAgent);
-        expect(isUserAgentSafari(userAgent), detect.isSafari,
-            reason: userAgent);
-        expect(isUserAgentChrome(userAgent), detect.isChrome,
-            reason: userAgent);
+        expect(
+          isUserAgentSafari(userAgent),
+          detect.isSafari,
+          reason: userAgent,
+        );
+        expect(
+          isUserAgentChrome(userAgent),
+          detect.isChrome,
+          reason: userAgent,
+        );
         expect(isUserAgentEdge(userAgent), detect.isEdge, reason: userAgent);
-        expect(isUserAgentChromeEdge(userAgent), detect.isChromeEdge,
-            reason: userAgent);
+        expect(
+          isUserAgentChromeEdge(userAgent),
+          detect.isChromeEdge,
+          reason: userAgent,
+        );
       }
     });
   });

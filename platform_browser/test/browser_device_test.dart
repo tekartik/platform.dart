@@ -36,7 +36,8 @@ void defineTests() {
     test('safari', () {
       // OS X 10.10.5
       var device = fromUserAgent(
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/601.1.56 (KHTML, like Gecko) Version/9.0 Safari/601.1.56');
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/601.1.56 (KHTML, like Gecko) Version/9.0 Safari/601.1.56',
+      );
       expect(device.isMobile, isFalse);
     });
 
@@ -49,7 +50,8 @@ void defineTests() {
     test('iPhone', () {
       // iPad2
       var device = fromUserAgent(
-          'Mozilla/5.0 (iPhone; CPU iPhone OS 9_0 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13A344 Safari/601.1');
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 9_0 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13A344 Safari/601.1',
+      );
       expect(device.isIPhone, isTrue);
     });
 
