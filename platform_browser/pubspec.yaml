@@ -12,7 +12,6 @@ dependencies:
   tekartik_platform:
     git:
       url: https://github.com/tekartik/platform.dart
-      ref: dart3a
       path: platform
   web: '>=0.5.0'
 dev_dependencies:
