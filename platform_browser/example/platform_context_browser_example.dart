@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:core' hide print;
 
-import 'package:tekartik_platform/context.dart';
 import 'package:tekartik_platform_browser/context_browser.dart';
 import 'package:tekartik_platform_test/platform_context_example.dart' as common;
 import 'package:web/web.dart';

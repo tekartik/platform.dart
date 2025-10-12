@@ -107,7 +107,7 @@ class _Browser implements Browser {
   BrowserDevice get device => _device ??= _Device(_detect);
 }
 
-class _BrowserPlatformContext implements PlatformContext {
+class _PlatformContextBrowser implements PlatformContext {
   @override
   Io? get io => null;
 
@@ -118,7 +118,7 @@ class _BrowserPlatformContext implements PlatformContext {
   @override
   final _Browser browser = _Browser();
 
-  _BrowserPlatformContext() {
+  _PlatformContextBrowser() {
     browser._detect.init();
   }
 
@@ -138,4 +138,10 @@ class _BrowserPlatformContext implements PlatformContext {
 PlatformContext? _browserPlatformContext;
 
 PlatformContext get browserPlatformContext =>
-    _browserPlatformContext ??= _BrowserPlatformContext();
+    _browserPlatformContext ??= _PlatformContextBrowser();
+
+/// Platform specific context only valid in a browser environment
+PlatformContext get platformContextBrowser => _platformContextBrowser;
+
+/// Platform specific context
+final _platformContextBrowser = _PlatformContextBrowser();

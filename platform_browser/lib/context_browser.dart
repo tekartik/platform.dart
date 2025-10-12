@@ -1,6 +1,2 @@
-import 'package:tekartik_platform/context.dart';
-
-import 'src/context_browser.dart' as context_browser;
-
-PlatformContext get platformContextBrowser =>
-    context_browser.browserPlatformContext;
+export 'package:tekartik_platform/context.dart';
+export 'src/export/export.dart' show platformContextBrowser;
