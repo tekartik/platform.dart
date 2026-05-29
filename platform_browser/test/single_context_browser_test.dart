@@ -10,7 +10,9 @@ void main() {
     //PlatformContext context = browserPlatformContext;
 
     test('browser', () {
+      // ignore: avoid_print
       print(platformContextBrowser.browser!.isMobile);
+      // ignore: avoid_print
       print(platformContextBrowser.browser!.device.supportsTouch);
     });
   });

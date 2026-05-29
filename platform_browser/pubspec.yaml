@@ -4,23 +4,23 @@ description: Get the global platform context
 publish_to: none
 
 environment:
-  sdk: ^3.9.0
+  sdk: ^3.12.0
 
 dependencies:
-  pub_semver: ">=2.1.4"
-  collection: ">=1.18.0"
+  pub_semver: ">=2.2.0"
+  collection: ">=1.19.1"
   tekartik_platform:
     git:
       url: https://github.com/tekartik/platform.dart
       path: platform
   web: '>=0.5.0'
 dev_dependencies:
-  test: ">=1.24.0"
-  dev_build: ">=1.1.2"
+  test: ">=1.31.0"
+  dev_build: ">=1.1.7+3"
   tekartik_platform_test:
     path: ../platform_test
-  build_runner: ">=2.4.13"
+  build_runner: ">=2.15.0"
   build_test: ">=0.10.2"
-  build_web_compilers: ">=4.0.11"
+  build_web_compilers: ">=4.4.19"
   process_run: ">=1.2.1+1"
 resolution: workspace
