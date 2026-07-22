@@ -7,36 +7,26 @@ import 'package:tekartik_platform/src/platform_mixin.dart';
 import 'package:tekartik_platform_io/context_io.dart';
 
 class _Io with PlatformMixin implements Io {
-  ///
   /// true if windows operating system
-  ///
   @override
   bool get isWindows => io.Platform.isWindows;
 
-  ///
   /// true if OS X operating system
-  ///
   @override
   bool get isMacOS => io.Platform.isMacOS;
 
   @override
   bool get isMac => isMacOS;
 
-  ///
   /// true if Linux operating system
-  ///
   @override
   bool get isLinux => io.Platform.isLinux;
 
-  ///
   /// true if Android operating system
-  ///
   @override
   bool get isAndroid => io.Platform.isAndroid;
 
-  ///
   /// get the version as string
-  ///
   String get versionText => io.Platform.version;
 
   String get _platformText {

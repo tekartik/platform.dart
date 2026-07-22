@@ -60,14 +60,10 @@ abstract class Io extends Platform {
   /// 2019-01-31 deprecated use [isMacOS]
   bool get isMac;
 
-  ///
   /// true if IOS operating system
-  ///
   bool get isIOS;
 
-  ///
   /// true if Android operating system
-  ///
   bool get isAndroid;
 }
 
@@ -78,19 +74,13 @@ abstract class Node extends Platform {
 
 /// Common platform for io & node
 abstract class Platform {
-  ///
   /// true if windows operating system
-  ///
   bool get isWindows;
 
-  ///
   /// true if OS X operating system
-  ///
   bool get isMacOS;
 
-  ///
   /// true if Linux operating system
-  ///
   bool get isLinux;
 
   /// Environment variables
