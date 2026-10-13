@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:core' hide print;
 
+import 'package:tekartik_js_utils_interop/js_converter.dart';
 import 'package:tekartik_platform_browser/context_browser.dart';
 import 'package:tekartik_platform_test/platform_context_example.dart' as common;
 import 'package:web/web.dart';
@@ -24,15 +25,10 @@ void run(PlatformContext context) {
   document.body!.querySelector('#context')!.textContent =
       const JsonEncoder.withIndent('  ').convert(context.toMap());
 
-  display('navigator.platform', window.navigator.platform);
-  display('navigator.userAgent', window.navigator.userAgent);
-  display('navigator.appVersion', window.navigator.appVersion);
-  display('navigator.language', window.navigator.language);
-  display('navigator.vendor', window.navigator.vendor);
-  display('navigator.appCodeName', window.navigator.appCodeName);
-  display('navigator.appName', window.navigator.appName);
-  display('navigator.vendorSub', window.navigator.vendorSub);
-  //display('navigator.dartEnabled', window.navigator.dartEnabled.toString());
+  // All navigator properties (own and inherited, functions excluded)
+  jsObjectToPropertyMap(window.navigator).forEach((key, value) {
+    display('navigator.$key', value);
+  });
 
   document.body!.querySelector('#info')!.textContent =
       const JsonEncoder.withIndent('  ').convert(info);
@@ -41,7 +37,7 @@ void run(PlatformContext context) {
 Element? list;
 Map info = {};
 
-void display(String name, String? value) {
+void display(String name, Object? value) {
   info[name] = value;
 }
 
