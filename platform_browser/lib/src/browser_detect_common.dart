@@ -72,23 +72,26 @@ Version parseVersion(String text) {
 }
 
 class BrowserDetectCommon {
+  /// True if the user agent contains `name/`.
+  bool _hasToken(String name) => _userAgent!.contains('$name/');
+
   // Handle stuff like 'Trident/7.0, Chrome/29.0...'
-  bool _checkAndGetVersion(String name) {
+  /// Version following `name/` in the user agent, null if not found.
+  Version? _tokenVersion(String name) {
     final index = _userAgent!.indexOf('$name/');
-    if (index >= 0) {
-      var versionString = _userAgent!.substring(index + name.length + 1);
-      var endVersion = versionString.indexOf(' ');
-      if (endVersion >= 0) {
-        versionString = versionString.substring(0, endVersion);
-      }
-      endVersion = versionString.indexOf(';');
-      if (endVersion >= 0) {
-        versionString = versionString.substring(0, endVersion);
-      }
-      _browserVersion = parseVersion(versionString);
-      return true;
+    if (index < 0) {
+      return null;
     }
-    return false;
+    var versionString = _userAgent!.substring(index + name.length + 1);
+    var endVersion = versionString.indexOf(' ');
+    if (endVersion >= 0) {
+      versionString = versionString.substring(0, endVersion);
+    }
+    endVersion = versionString.indexOf(';');
+    if (endVersion >= 0) {
+      versionString = versionString.substring(0, endVersion);
+    }
+    return parseVersion(versionString);
   }
 
   Version? _browserVersion;
@@ -105,26 +108,54 @@ class BrowserDetectCommon {
   bool? _isMac;
   bool? _isLinux;
 
+  /// Clear all the values computed from the user agent (the fields above).
+  void _clearCache() {
+    _browserVersion = null;
+    _isFirefox = null;
+    _isSafari = null;
+    _isMobile = null;
+    _isChrome = null;
+    _isIe = null;
+    _isEdge = null;
+    _isChromeEdge = null;
+    _isWindows = null;
+    _isMac = null;
+    _isLinux = null;
+  }
+
   // Version 0 if not found
-  Version get browserVersion => _browserVersion ??=
-      () {
-        // Check all platforms
-        isIe;
-        isEdge;
-        isChrome;
-        isChromeChromium;
-        isSafari;
-        isFirefox;
-        isChromeEdge;
-        return _browserVersion;
-      }() ??
-      Version.none;
+  Version get browserVersion => _browserVersion ??= _computeBrowserVersion();
+
+  /// The version of the detected browser: ie or edge, otherwise the last
+  /// one found of chrome (or chromium), safari, firefox and chrome edge.
+  Version _computeBrowserVersion() {
+    if (isIe) {
+      return _tokenVersion('Trident')!;
+    }
+    if (isEdge) {
+      return _tokenVersion('Edge')!;
+    }
+    Version? version;
+    if (isChrome) {
+      version = _tokenVersion('Chromium') ?? _tokenVersion('Chrome');
+    }
+    if (isSafari) {
+      version = _tokenVersion('Version') ?? version;
+    }
+    if (isFirefox) {
+      version = _tokenVersion('Firefox');
+    }
+    if (isChromeEdge) {
+      version = _tokenVersion('Edg');
+    }
+    return version ?? Version.none;
+  }
 
   bool get isIe {
     if (_isIe == null) {
       init();
       // Edge 12 and over
-      _isIe = _checkAndGetVersion('Trident');
+      _isIe = _hasToken('Trident');
     }
     return _isIe!;
   }
@@ -133,7 +164,7 @@ class BrowserDetectCommon {
     if (_isEdge == null) {
       init();
       // Edge 12 and over
-      _isEdge = _checkAndGetVersion('Edge');
+      _isEdge = _hasToken('Edge');
     }
     return _isEdge!;
   }
@@ -143,7 +174,7 @@ class BrowserDetectCommon {
     if (_isChromeEdge == null) {
       init();
       // Edge 120 and over
-      _isChromeEdge = _checkAndGetVersion('Edg');
+      _isChromeEdge = _hasToken('Edg');
     }
     return _isChromeEdge!;
   }
@@ -155,13 +186,13 @@ class BrowserDetectCommon {
     if (_isChrome == null) {
       init();
       // Can check vendor too...
-      _isChrome = _checkAndGetVersion('Chrome');
+      _isChrome = _hasToken('Chrome');
     }
     return _isChrome!;
   }
 
   bool get isChromeChromium {
-    return isChrome && _checkAndGetVersion('Chromium');
+    return isChrome && _hasToken('Chromium');
   }
 
   bool get isChromeDartium {
@@ -171,7 +202,7 @@ class BrowserDetectCommon {
   bool get isFirefox {
     if (_isFirefox == null) {
       init();
-      _isFirefox = _checkAndGetVersion('Firefox');
+      _isFirefox = _hasToken('Firefox');
     }
     return _isFirefox!;
   }
@@ -180,9 +211,6 @@ class BrowserDetectCommon {
     if (_isSafari == null) {
       init();
       _isSafari = !isChrome && _userAgent!.contains('Safari');
-      if (_isSafari!) {
-        _checkAndGetVersion('Version');
-      }
     }
     return _isSafari!;
   }
@@ -240,16 +268,7 @@ class BrowserDetectCommon {
 
   set userAgent(String? userAgent) {
     _userAgent = userAgent;
-
-    // Navigator
-    _isFirefox = null;
-    _isChrome = null;
-    _isSafari = null;
-    _isIe = null;
-    _isEdge = null;
-
-    _isMobile = null;
-    _browserVersion = null;
+    _clearCache();
 
     if (_userAgent != null) {
       // ie/edge is tricky as it sets others

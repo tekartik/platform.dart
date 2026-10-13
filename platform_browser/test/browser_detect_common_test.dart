@@ -242,5 +242,48 @@ void defineTests() {
       expect(browserDetect.browserVersion, Version(46, 0, 2490, build: '76'));
       checkSingleBrowser();
     });
+
+    const chromeMacUserAgent =
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+    const chromeEdgeWindowsUserAgent =
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.2210.91';
+
+    test('changing the user agent clears every detection', () {
+      browserDetect.userAgent = chromeMacUserAgent;
+      expect(browserDetect.isMac, isTrue);
+      expect(browserDetect.isWindows, isFalse);
+      expect(browserDetect.isChromeEdge, isFalse);
+      expect(browserDetect.browserVersion, Version(120, 0, 0, build: '0'));
+
+      browserDetect.userAgent =
+          'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0';
+      expect(browserDetect.isMac, isFalse);
+      expect(browserDetect.isWindows, isTrue);
+      expect(browserDetect.isChrome, isFalse);
+      expect(browserDetect.isFirefox, isTrue);
+      expect(browserDetect.browserVersion, Version(29, 0, 0));
+
+      browserDetect.userAgent = chromeEdgeWindowsUserAgent;
+      expect(browserDetect.isChromeEdge, isTrue);
+      browserDetect.userAgent = chromeMacUserAgent;
+      expect(browserDetect.isChromeEdge, isFalse);
+      expect(browserDetect.isMac, isTrue);
+      expect(browserDetect.isWindows, isFalse);
+    });
+
+    test('version does not depend on the detections read before', () {
+      var edgeVersion = Version(120, 0, 2210, build: '91');
+      expect(
+        fromUserAgent(chromeEdgeWindowsUserAgent).browserVersion,
+        edgeVersion,
+      );
+      var detect = fromUserAgent(chromeEdgeWindowsUserAgent);
+      expect(detect.isChrome, isTrue);
+      expect(detect.isChromeChromium, isFalse);
+      expect(detect.isSafari, isFalse);
+      expect(detect.browserVersion, edgeVersion);
+      expect(detect.isChromeEdge, isTrue);
+      expect(detect.browserVersion, edgeVersion);
+    });
   });
 }
