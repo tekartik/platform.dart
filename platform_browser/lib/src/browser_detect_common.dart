@@ -259,8 +259,12 @@ class BrowserDetectCommon {
   }
 
   bool get isMobileAndroid {
-    return isMobile && _userAgent!.contains('Android');
+    return isMobile && isAndroid;
   }
+
+  /// True on Android, phones and tablets (a tablet user agent has no
+  /// `Mobile` token, see [isMobileAndroid]).
+  bool get isAndroid => _userAgent!.contains('Android');
 
   String? _userAgent;
 

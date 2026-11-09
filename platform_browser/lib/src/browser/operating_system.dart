@@ -15,8 +15,9 @@ class OperatingSystemBrowser implements OperatingSystem {
   @override
   bool get isLinux => _detect.isLinux;
 
+  /// Phones and tablets.
   @override
-  bool get isAndroid => _detect.isMobileAndroid;
+  bool get isAndroid => _detect.isAndroid;
 
   @override
   bool get isIOS => _detect.isMobileIOS;

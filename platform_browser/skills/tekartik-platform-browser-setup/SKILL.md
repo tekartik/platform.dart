@@ -52,8 +52,9 @@ null. Importing it is safe everywhere; accessing the context is web only.
   when nothing matched.
 * `os` (`OperatingSystem`): `isWindows` (`Windows`), `isMac` (`Macintosh`,
   which iPadOS desktop-mode Safari also reports), `isLinux` (`Linux`, true on
-  Android too), `isAndroid` (mobile and `Android`), `isIOS` (mobile and
-  iPad/iPhone/iPod). `isMobile` means a `Mobile` token in the user agent.
+  Android too), `isAndroid` (`Android`: phones and tablets, a tablet has no
+  `Mobile` token), `isIOS` (mobile and iPad/iPhone/iPod). `isMobile` means a
+  `Mobile` token in the user agent.
   `device` (`BrowserDevice`): `isIPad`, `isIPhone`, `isIPod`, `isMobile`,
   and `supportsTouch` (`navigator.maxTouchPoints > 0`, the only flag not
   derived from the user agent).
@@ -75,7 +76,8 @@ null. Importing it is safe everywhere; accessing the context is web only.
   `dart test -p chrome` (the package's `dart_test.yaml` runs vm, chrome and
   node). User-agent rules are testable on the VM with the internal
   `src/browser_detect_common.dart` (`BrowserDetectCommon` with a settable
-  `userAgent`, `browserVersion`, `isMobileAndroid`, `isMobileIOS`, plus
+  `userAgent`, `browserVersion`, `isAndroid`, `isMobileAndroid` (phones
+  only), `isMobileIOS`, plus
   `parseVersion`), `src/browser/operating_system.dart`
   (`OperatingSystemBrowser(detect)`) and `src/browser/device.dart`
   (`Device(detect)`, whose `supportsTouch` is always false). These are

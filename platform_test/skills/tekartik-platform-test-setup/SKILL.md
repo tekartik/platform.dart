@@ -28,7 +28,8 @@ implementation, or capture its output in a test.
         path: platform_test
   ```
   Inside the repo workspace it is `path: ../platform_test`. It depends on
-  `tekartik_platform` (same repo, `path: platform`) only.
+  `tekartik_platform` (same repo, `path: platform`) and
+  `tekartik_common_utils`.
 * Import `package:tekartik_platform_test/platform_context_example.dart` with
   a prefix (`as common`): the library hides `dart:core`'s `print` and declares
   its own top level `late void Function(Object? object) print`, so an

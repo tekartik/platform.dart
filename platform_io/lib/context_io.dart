@@ -1,3 +1,8 @@
+/// The io platform context: [platformContextIo] on the Dart VM, CLI and
+/// Flutter mobile/desktop, it throws on the web where
+/// [platformContextIoOrNull] is null.
+library;
+
 import 'package:tekartik_platform/context.dart';
 
 export 'src/export/export.dart'

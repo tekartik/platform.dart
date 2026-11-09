@@ -8,8 +8,10 @@ browser, which OS, which browser).
   (Dart VM, Flutter mobile and desktop).
 * [platform_browser](platform_browser) (`tekartik_platform_browser`):
   `platformContextBrowser` (browser).
+* [platform_test](platform_test) (`tekartik_platform_test`): dev helper that
+  prints what a context reports.
 
-## IO Setup
+The packages are not on pub.dev, add them as git dependencies:
 
 ```yaml
 dependencies:
@@ -17,18 +19,10 @@ dependencies:
     git:
       url: https://github.com/tekartik/platform.dart
       path: platform_io
-    version: '>=0.2.1'
-```
-
-## Browser Setup
-
-```yaml
-dependencies:
   tekartik_platform_browser:
     git:
       url: https://github.com/tekartik/platform.dart
       path: platform_browser
-    version: '>=0.2.1'
 ```
 
 See [platform/README.md](platform/README.md) for the usage.

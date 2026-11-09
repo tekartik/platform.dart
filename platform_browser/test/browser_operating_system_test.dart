@@ -76,6 +76,26 @@ void defineTests() {
       expect(os.isIOS, isTrue);
     });
 
+    test('android phone and tablet', () {
+      // Chrome on an Android phone
+      var os = fromUserAgent(
+        'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.76 Mobile Safari/537.36',
+      );
+      expect(os.isAndroid, isTrue);
+      expect((os as OperatingSystemBrowser).toMap()['platform'], 'android');
+
+      // Chrome on an Android tablet: no Mobile token
+      var detect = BrowserDetectCommon()
+        ..userAgent =
+            'Mozilla/5.0 (Linux; Android 13; SM-X700) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+      os = fromUserAgent(detect.userAgent!);
+      expect(detect.isMobile, isFalse);
+      expect(detect.isMobileAndroid, isFalse);
+      expect(detect.isAndroid, isTrue);
+      expect(os.isAndroid, isTrue);
+      expect((os as OperatingSystemBrowser).toMap()['platform'], 'android');
+    });
+
     /*
     test('ie', () {
       browserDetect.userAgent =
